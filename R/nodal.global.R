@@ -21,7 +21,7 @@ function(blauObj, dev.range=1.5, ecologies.off = FALSE){
     }    
     blauObj <- calc.nodal.ecology(blauObj, uniqueEcologies, mode = "global")
   }
-  colnames(blauObj$nodalGlobal) <- c("TotalOrgs", "Nicher", "MemList")
+  colnames(blauObj$nodalGlobal) <- c("TotalOrgs", "Nicher", "NicheList")
   
   return(blauObj)
 }

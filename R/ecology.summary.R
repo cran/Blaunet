@@ -3,9 +3,9 @@ function(blauObj, percent = FALSE){
   uniqueEcologies <- unique(blauObj$ids[,2])
   uniqueEcologies <- uniqueEcologies[!is.na(uniqueEcologies)]
 
-  ecologySum <- matrix(0, nrow = 0, ncol = (ncol(blauObj$memberships) + 2)) #ecology name, niche name, num in org, num in niche, num in org but not niche, num not in any other niche, overlap 2+ other niches ##no boundaries, too cluttered
+  sum.ecology <- matrix(0, nrow = 0, ncol = (ncol(blauObj$memberships) + 2)) #ecology name, niche name, num in org, num in niche, num in org but not niche, num not in any other niche, overlap 2+ other niches ##no boundaries, too cluttered
 
-  colnames(ecologySum) <- c("Ecology", "Org/Niche", colnames(blauObj$memberships))
+  colnames(sum.ecology) <- c("Ecology", "Org/Niche", colnames(blauObj$memberships))
 
   for (ecologyId in uniqueEcologies){
 
@@ -19,7 +19,7 @@ function(blauObj, percent = FALSE){
 
     #how many individuals are exclusively in a niche?
     #get this by summing up all isInNiche rows with sum = 1
-    mat.diagonal <- rep(0, ncol(focalNiches))
+    mat.diagonal <- as.matrix(rep(0, ncol(focalNiches)))
 
     for (node in 1:nrow(focalNiches)){
       if(sum(focalNiches[node,]) == 1){
@@ -37,8 +37,8 @@ function(blauObj, percent = FALSE){
       sum.mat <- sum.mat / orig.diag
     }
 
-    ecologySum <- rbind(ecologySum, cbind(cbind(rep(ecologyId, ncol(blauObj$memberships)), colnames(blauObj$memberships)), sum.mat))
+    sum.ecology <- rbind(sum.ecology, cbind(cbind(rep(ecologyId, ncol(blauObj$memberships)), colnames(blauObj$memberships)), sum.mat))
   }
-  rownames(ecologySum) <- NULL
-  return(ecologySum)
+  rownames(sum.ecology) <- NULL
+  return(sum.ecology)
 }

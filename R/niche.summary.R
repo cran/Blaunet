@@ -4,9 +4,9 @@ function(blauObj){
   uniqueEcologies <- unique(blauObj$ids[,2])
   uniqueEcologies <- uniqueEcologies[!is.na(uniqueEcologies)]
 
-  nicheSum <- matrix(0, nrow = length(uniqueEcologies)*ncol(blauObj$memberships), ncol = 7) #ecology name, niche name, num in org, num in niche, num in org but not niche, num not in any other niche, overlap 2+ other niches ##no boundaries, too cluttered
+  sum.niche <- matrix(0, nrow = length(uniqueEcologies)*ncol(blauObj$memberships), ncol = 7) #ecology name, niche name, num in org, num in niche, num in org but not niche, num not in any other niche, overlap 2+ other niches ##no boundaries, too cluttered
 
-  colnames(nicheSum) <- c("Ecology", "Org/Niche", "OrgMem", "NicheMem", "NicheExc", "NicheOvr", "MemExc")
+  colnames(sum.niche) <- c("Ecology", "Org/Niche", "OrgMem", "NicheMem", "NicheExc", "NicheOvr", "MemExc")
 
   rowCount <- 1
 
@@ -31,12 +31,12 @@ function(blauObj){
       #overlaps with at least 2 niches
       numNonExclusive <- sum(focalNiches[, nicheNum], na.rm = TRUE) - nicheExcl
 
-      nicheSum[rowCount,] <- c(ecologyId, colnames(blauObj$memberships)[nicheNum], sum(focalMemberships[, nicheNum], na.rm = TRUE), sum(focalNiches[, nicheNum], na.rm = TRUE), nicheExcl, numNonExclusive, numOutside)
+      sum.niche[rowCount,] <- c(ecologyId, colnames(blauObj$memberships)[nicheNum], sum(focalMemberships[, nicheNum], na.rm = TRUE), sum(focalNiches[, nicheNum], na.rm = TRUE), nicheExcl, numNonExclusive, numOutside)
 
       rowCount <- rowCount + 1
       nicheNum <- nicheNum + 1
     }
   }
 
-  return(nicheSum)
+  return(sum.niche)
 }

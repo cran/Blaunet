@@ -45,7 +45,7 @@ blau(
     Defaults to \code{FALSE}. A boolean setting indicating whether all rows with at least one missing value should be dropped before proceeding with calculations. Otherwise, the program will be ``greedy'' about determining niche boundaries, using as much information as possible.}
 }
 \details{
-The most common raw data format is a \code{.csv} file that contains ecology identifiers, node identifiers, blau parameters, and memberships, among other variables
+The most common raw data format is a \code{.csv} file that contains ecology identifiers, node identifiers, blau parameters, and memberships, among other variables. \bold{Note:} Unless told otherwise, this function will automatically assume binary columns are memberships and non-binary columns are parameters. Manual specification of memberships or parameters will overwrite this auto-detection. This makes it easy to work with relatively large data without specificing dozens of columns.
 
 The vast majority of configuration takes place when calling the blau function. As such, it is essential that the user understand how choices made here impact the operation of subsequent functions. The easiest way to get started is to determine which of the four optional parameters---node identifiers (\code{node.ids}), ecology identifiers (\code{ecology.ids}), weights (\code{weights}), and relational data (\code{graph})---are present in your dataset and will be used for analysis. These should be specified by indicating their locations with the appropriate function argument, and the \code{blau} function will automatically assume all other columns are either membership or demographic columns. If there are columns to be excluded from analysis, they can be specified with the exclude parameter. This type of setup is appropriate for the vast majority of datasets.
 
@@ -92,6 +92,9 @@ b <- nodal.global(b)
 b <- blau(TwoCities, node.ids = 'respID', ecology.ids = 'samp', exclude='ideo')
 ##compute niches like before
 b <- niches(b)
+
+##assume we only want income and educ parameters. Note the "c".
+b <- blau(TwoCities, node.ids = 'respID', ecology.ids = 'samp', dimensions=c('income', 'educ'))
 
 ##example with relational data
 data(BSANet)

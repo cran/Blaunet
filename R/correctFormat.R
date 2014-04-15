@@ -10,7 +10,7 @@ function(arg, square.data) {
         return(arg)
       }    
       else {
-        sprintf("Input for option %s could not be treated as a character or vector", arg)
+        sprintf('Input for option %s could not be treated as a character or vector', arg)
       } 
     }
     else if (length(arg > 1)){
@@ -25,7 +25,7 @@ function(arg, square.data) {
             argList[each] <- as.numeric(arg_temp)
           } else if (is.character(arg_temp)) {
             argList[each] <- as.numeric(which(colnames(square.data) == arg_temp))
-          } else print("errors")
+          } else print('errors')
         } 
         return(unique(argList))
       }

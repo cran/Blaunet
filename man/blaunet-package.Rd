@@ -10,8 +10,8 @@ An integrated set of tools to calculate and analyze Blau statuses quantifying so
 \tabular{ll}{
 Package: \tab Blaunet\cr
 Type: \tab Package\cr
-Version: \tab 1.0.0\cr
-Date: \tab 2014-01-20\cr
+Version: \tab 1.0.1\cr
+Date: \tab 2014-04-14\cr
 Depends: \tab network (>= 1.7.1)\cr
 License: \tab GPL-3\cr
 }
@@ -31,17 +31,17 @@ License: \tab GPL-3\cr
 \bold{d. Ecology}: A relatively bound system where organizations compete for members. The system is bound by spatial or other considerations. For example, a school where extracurricular clubs compete for members could represent a single ecology. A second school in another town may form a second ecology, as the second schools clubs do not recruit at the first school. A town where different voluntary organizations compete for members can also represent a single ecology. By assumption, organizations can only compete within an ecology. For instance, an Elks group can compete with a church group so long as the two draw members from the same community. However, much like the boundary specification problem (Laumann, Marsden, Prensky 1983) in social networks, ecologies are difficult to precisely define.
 
 \bold{3. Data Structure}: Several types of information are necessary or helpful to specific the Blau statuses of individuals: 
-\bold{a)} Individual ID: this variable identifies the individuals in the dataset
+\bold{i.)} Individual ID: this variable identifies the individuals in the dataset
 
-\bold{b)} Ecology ID: indicates how individuals are partitioned into ecologies (e.g. schools, cities, etc.).
+\bold{ii.)} Ecology ID: indicates how individuals are partitioned into ecologies (e.g. schools, cities, etc.).
 
-\bold{c)} Blau Parameters: continuous demographic characteristics of individuals that the researcher finds relevant to determining similarity among individuals (e.g. age, SES, BMI). This set of variables is used to construct the niches that structure Blau space.
+\bold{iii.)} Blau Parameters: continuous demographic characteristics of individuals that the researcher finds relevant to determining similarity among individuals (e.g. age, SES, BMI). This set of variables is used to construct the niches that structure Blau space.
 
-\bold{d)} Organizational Memberships: the membership of individuals in specific organizations (e.g. charitable organizations, religious groups, fraternal organizations). This set of variables is used to construct the niches that individuals occupy.
+\bold{iv.)} Organizational Memberships: the membership of individuals in specific organizations (e.g. charitable organizations, religious groups, fraternal organizations). This set of variables is used to construct the niches that individuals occupy.
 
-\bold{e)} Network data: the sociometric network information of individuals. This information is used to compute dyadic blau statuses, although is not necessary for other status computations.
+\bold{v.)} Network data: the sociometric network information of individuals. This information is used to compute dyadic blau statuses, although is not necessary for other status computations.
 
-\bold{f)} Weights (optional): for data that was sampled from a population and where Blau  parameters need to be adjusted by weights.
+\bold{vi.)} Weights (optional): for data that was sampled from a population and where Blau  parameters need to be adjusted by weights.
 
 \bold{4. Note:} This is the first version of Blaunet. We've made every effort to make sure that that the program works correctly. However, we advise caution as we are unable to test on every type of dataset. If anything looks anomalous, please let us know at the maintenance email address below. 
 

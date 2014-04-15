@@ -10,10 +10,10 @@ function(blauObj){
   diff_names <- setdiff(namelist, rownames(blauObj$dimensions))
   blauObj$graph <- delete.vertices(blauObj$graph, vapply(diff_names, function(x) which(namelist == x), 1))
 
-  edgelist <- as.matrix(blauObj$graph, matrix.type="edgelist")
+  edgelist <- as.matrix(blauObj$graph, matrix.type='edgelist')
 
   #make a named edgelist, makes our computations easier
-  charEL <- charEdgelist(edgelist, attr(edgelist, "vnames"))
+  charEL <- charEdgelist(edgelist, attr(edgelist, 'vnames'))
 
   #if we're given an undirected graph (undirected EL/symmetric adjacency matrix)
   #duplicate the EL with the origin nodes reversed
@@ -27,8 +27,8 @@ function(blauObj){
   }
 
   #this is kind of a confusing piece of code at first
-  #it sets a "current" origin node and cycles through all of that node's neighbors
-  #when it hits a new "current" node, it records all of the information for the previous "current" node
+  #it sets a 'current' origin node and cycles through all of that node's neighbors
+  #when it hits a new 'current' node, it records all of the information for the previous 'current' node
   #then it resets the list of niches spanned to and begins recording information on the new current node
   currentNode <- charEL[1,1]
   spannedTo <- c()
@@ -60,13 +60,14 @@ function(blauObj){
 
       #nodal spanners are defined as:
       #node1 is not in nicheA but has a friend in nicheA
-      #node1 is then said to "span" to nicheA
+      #node1 is then said to 'span' to nicheA
 
       #niches spanned to are indicated by 1's
       #we get number spanned to
       spannedTo <- union(spannedTo, (which((niches2 - niches1) == 1)))
     }
   }
+  
   #save the last elements when loop stops
   blauObj$nodalNetwork[currentNode,1] <- ifelse(length(spannedTo) > 0, 1, 0)
   blauObj$nodalNetwork[currentNode,2] <- length(spannedTo)

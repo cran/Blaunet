@@ -69,7 +69,7 @@ function(blauObj, dev.range) {
   #overwrite NAs with zeroes
   blauObj$isInNiche[is.na(blauObj$isInNiche)] <- 0
 
-  colnames(blauObj$isInNiche) <- colnames(blauObj$memberships)
+  colnames(blauObj$isInNiche) <- vapply(colnames(blauObj$memberships), function(x) paste(x, "niche", sep="_"), "a")
   rownames(blauObj$isInNiche) <- rownames(blauObj$memberships)
   
   return(blauObj)

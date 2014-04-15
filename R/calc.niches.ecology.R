@@ -5,7 +5,7 @@ function(blauObj, uniqueEcologies, dev.range){
   uniqueEcologies <- uniqueEcologies[!is.na(uniqueEcologies)]
   
   blauObj$isInNiche <- matrix(0, nrow = nrow(blauObj$dimensions), ncol = (ncol(blauObj$memberships) + 1)) #extra column for ecology names
-  colnames(blauObj$isInNiche) <- c(colnames(blauObj$memberships), 'ecologyNames')
+  colnames(blauObj$isInNiche) <- c(vapply(colnames(blauObj$memberships), function(x) paste(x, "niche", sep="_"), "a"), 'ecologyNames')
   rownames(blauObj$isInNiche) <- blauObj$ids[,1]
   
   for(ecologyId in uniqueEcologies){ #iterate through each ecology: all of the calculations for the ecology happen here and they are appended to $isInNiche, $topbounds, and $lowbounds
@@ -31,7 +31,7 @@ function(blauObj, uniqueEcologies, dev.range){
   }
 
   tempData <- blauObj$isInNiche[,which(colnames(blauObj$isInNiche) != 'ecologyNames')]
-  class(tempData) <- "numeric"
+  class(tempData) <- 'numeric'
 
   blauObj$isInNiche <- cbind(as.data.frame(tempData), blauObj$isInNiche[,which(colnames(blauObj$isInNiche) == 'ecologyNames')])
 

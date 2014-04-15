@@ -17,5 +17,5 @@ function(blauObj, presentCases){
 
     #we don't cut down connections, we keep the full network object
     #we don't cut down top/lowbounds because they're computed in a manner specified with the input function and aren't the same size
-    #we don't cut down "final" elements such as nodalLocal because they've been computed already according to user specification
+    #we don't cut down 'final' elements such as nodalLocal because they've been computed already according to user specification
 }

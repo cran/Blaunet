@@ -6,9 +6,9 @@ function(blauObj, m.dist) {
   diff_names <- setdiff(nameList, rownames(blauObj$dimensions))
   blauObj$graph <- delete.vertices(blauObj$graph, vapply(diff_names, function(x) which(nameList == x), 1))
 
-  edgelist <- as.matrix(blauObj$graph, matrix.type="edgelist")
+  edgelist <- as.matrix(blauObj$graph, matrix.type='edgelist')
 
-  charEL <- charEdgelist(edgelist, attr(edgelist, "vnames"))
+  charEL <- charEdgelist(edgelist, attr(edgelist, 'vnames'))
 
   #if we're given an undirected graph (undirected EL/symmetric adjacency matrix)
   #duplicate the EL with the origin nodes reversed

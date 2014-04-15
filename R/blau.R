@@ -7,6 +7,8 @@ function(square.data, graph = NULL, directed.el = FALSE, node.ids = NULL, weight
     square.data <- square.data[-excluded]    
   }
 
+  #need: put this after everything has been created
+  #right now can cause unexpected behavior
   if (complete.cases == TRUE){
     square.data <- square.data[complete.cases(as.data.frame(square.data)),]
   }
@@ -18,12 +20,12 @@ function(square.data, graph = NULL, directed.el = FALSE, node.ids = NULL, weight
 
   #blau object
   blauObj <- list() #should have a dataframe/list/matrix/etc for each option
-  class(blauObj) <- "blau"
+  class(blauObj) <- 'blau'
 
   #ERROR CHECKS: it's vital that if the program is extended and new error checks for input format are needed that they be added here. The reason is simple: the input options are cleaned up and checks are displayed IMMEDIATELY to the user. There should be no waiting 60 seconds only to find an error in the input arguments. ALSO: getting errors out of the way and cleaning up the options arguments makes the following code MUCH easier to write and read.
 
   #checks whether arguments that should be length 1 are length 1
-  if (!isCorrectLength(node.ids) || !isCorrectLength(ecology.ids) || !isCorrectLength(weights)) {print("Error in Argument Length")}
+  if (!isCorrectLength(node.ids) || !isCorrectLength(ecology.ids) || !isCorrectLength(weights)) {print('Error in Argument Length')}
 
   #checks whether arguments are are in numeric form. if they're not, converts to numeric form. all column identifiers should be nuemric after this point.
   #if column names are needed (for writing, say), use colnames(OBJECT[colnumber])
@@ -78,7 +80,7 @@ function(square.data, graph = NULL, directed.el = FALSE, node.ids = NULL, weight
 
   #put node and ecology identifiers together into one object
   blauObj$ids <- as.data.frame(cbind(tempNodeId, tempEcologyId))
-  colnames(blauObj$ids) <- c("nodeId", "ecologyId")
+  colnames(blauObj$ids) <- c('nodeId', 'ecologyId')
 
   #weights
   if (is.null(weights)) { 
@@ -94,7 +96,7 @@ function(square.data, graph = NULL, directed.el = FALSE, node.ids = NULL, weight
   #the user MUST SPECIFY node ids in object that is turned into an edgelist
   #otherwise, there is no way we can assure that nodes are matched correctly
   if (!is.null(graph)) {
-    if (class(graph) == "network"){
+    if (class(graph) == 'network'){
       blauObj$graph <- graph
     }
     else {
@@ -124,7 +126,7 @@ function(square.data, graph = NULL, directed.el = FALSE, node.ids = NULL, weight
   else { #if not null, take specified columns and raise an error if there's overlap with columns reserved by other options
     ignoredCols <- unique(c(node.ids, ecology.ids, weights, binaryCols, memberships, charCols))
     if (length(intersect(dimensions, ignoredCols)) > 0) { 
-      print("You have overlaps between specified Blau dimensions and other columns.")
+      print('You have overlaps between specified Blau dimensions and other columns.')
     }
     else { 
       blauObj$dimensions <- as.matrix(square.data[dimensions])
@@ -143,7 +145,7 @@ function(square.data, graph = NULL, directed.el = FALSE, node.ids = NULL, weight
   else { 
     ignoredCols <- unique(c(node.ids, ecology.ids, weights, dimensions,continuousCols, charCols))
     if (length(intersect(memberships,ignoredCols)) > 0) { 
-      print("You have overlaps specified between membership columns and other columns.")
+      print('You have overlaps specified between membership columns and other columns.')
     }
     else { 
       blauObj$memberships <- as.matrix(square.data[memberships])
@@ -161,18 +163,29 @@ function(square.data, graph = NULL, directed.el = FALSE, node.ids = NULL, weight
     rownames(blauObj$primaryMembership) <- blauObj$ids[,1]
   }
 
+  #missing weight values
+  presentObs <- complete.cases(blauObj$weights)
+
+  blauObj$ids <- blauObj$ids[presentObs, , drop=FALSE]
+  blauObj$dimensions <- blauObj$dimensions[presentObs, , drop=FALSE]
+  blauObj$memberships <- blauObj$memberships[presentObs, , drop=FALSE]
+  blauObj$weights <- blauObj$weights[presentObs, , drop=FALSE]
+
+  if (!is.null(blauObj$primaryMembership)){
+    blauObj$primaryMembership <- blauObj$primaryMembership[presentObs, , drop=FALSE]
+  }
 
   #for the soul who decides to input a character matrix
   #this is here because datatypes in R can get confusing when both characters and numbers are stored in a data.frame
   #also, we're programming for potential R neophytes
   if (is.character(blauObj$dimensions)){
-    print("The dimensions contain at least one character column. Dmensions must be numeric")
+    print('The dimensions contain at least one character column. Dmensions must be numeric')
   }
   if (is.character(blauObj$memberships)){
-    print("The memberships contain at least one character column. Memberships must be numeric")
+    print('The memberships contain at least one character column. Memberships must be numeric')
   }
   if (is.character(blauObj$weights)){
-    print("The weights contain at least one character element. Weights must be numeric")
+    print('The weights contain at least one character element. Weights must be numeric')
   }
 
   #initilize null items for checks in subsequent functions

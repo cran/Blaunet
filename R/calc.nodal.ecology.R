@@ -4,7 +4,7 @@ function(blauObj, uniqueEcologies, mode){
   uniqueEcologies <- unique(blauObj$ids[,2])
   uniqueEcologies <- uniqueEcologies[!is.na(uniqueEcologies)]
   
-  if (mode == "local"){
+  if (mode == 'local'){
     blauObj$nodalLocal <- matrix(0, nrow = 0, ncol = 2)
 
     for(ecologyId in uniqueEcologies){
@@ -17,7 +17,7 @@ function(blauObj, uniqueEcologies, mode){
     }
   }
 
-  else if (mode == "global"){
+  else if (mode == 'global'){
     blauObj$nodalGlobal <- matrix(0, nrow = 0, ncol = 3)
 
     for(ecologyId in uniqueEcologies){
@@ -30,7 +30,7 @@ function(blauObj, uniqueEcologies, mode){
     }
   }
 
-  if (mode == "network"){
+  if (mode == 'network'){
     blauObj$nodalNetwork <- matrix(0, nrow = 0, ncol = 2)
 
     for(ecologyId in uniqueEcologies){

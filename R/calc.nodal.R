@@ -2,7 +2,7 @@ calc.nodal <-
 function(blauObj, mode){ 
 
   #requires focalNiche (primMem) specification
-  if (mode == "local"){
+  if (mode == 'local'){
 
     #initialize
     blauObj$nodalLocal <- as.data.frame(matrix(0, nrow = nrow(blauObj$memberships), ncol= 3))
@@ -13,7 +13,7 @@ function(blauObj, mode){
     blauObj$nodalLocal[,1] <- blauObj$isInNiche[, blauObj$primMemCol]
 
     #total number of niches individual is in
-    blauObj$nodalLocal[,2] <- matrix(apply(blauObj$isInNiche, 1, function(x) sum(x)), ncol = 1, byrow = TRUE)
+    blauObj$nodalLocal[,2] <- matrix(apply(blauObj$isInNiche, 1, function(x) sum(x, na.rm=TRUE)), ncol = 1, byrow = TRUE)
 
     #if individual is in primary org but outside of primary niche
     for(nodeCyc in 1:length(blauObj$isInNiche[, blauObj$primMemCol])){
@@ -27,13 +27,13 @@ function(blauObj, mode){
   }
 
   #does not require focalNiche(primMem)
-  else if (mode == "global"){
+  else if (mode == 'global'){
 
     #number of organizations individual is in
-    orgs <- matrix(apply(blauObj$memberships, 1, function(x) sum(x)), ncol = 1, byrow = TRUE)
+    orgs <- matrix(apply(blauObj$memberships, 1, function(x) sum(x, na.rm = TRUE)), ncol = 1, byrow = TRUE)
 
     #number of niches individual is in
-    niches <- matrix(apply(blauObj$isInNiche, 1, function(x) c(sum(x), c(paste(which(x == 1), collapse=' ')))), ncol = 2, byrow = TRUE)
+    niches <- matrix(apply(blauObj$isInNiche, 1, function(x) c(sum(x, na.rm = TRUE), c(paste(which(x == 1), collapse=' ')))), ncol = 2, byrow = TRUE)
 
     blauObj$nodalGlobal <- cbind(orgs, niches)
 
