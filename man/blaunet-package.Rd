@@ -1,4 +1,5 @@
 \name{Blaunet-package}
+\alias{blaunet}
 \docType{package}
 \title{
 Calculate and Analyze Blau statuses for measuring social distance
@@ -10,8 +11,8 @@ An integrated set of tools to calculate and analyze Blau statuses quantifying so
 \tabular{ll}{
 Package: \tab Blaunet\cr
 Type: \tab Package\cr
-Version: \tab 1.0.1\cr
-Date: \tab 2014-04-14\cr
+Version: \tab 2.0.1\cr
+Date: \tab 2015-12-27\cr
 Depends: \tab network (>= 1.7.1)\cr
 License: \tab GPL-3\cr
 }
@@ -47,24 +48,29 @@ License: \tab GPL-3\cr
 
 }
 \author{
-Michael Genkin [aut], 'mg324@cornell.edu'
+Cheng Wang*, 'cwang3@nd.edu'
 
-George Berry [aut], 'geb97@cornell.edu'
+Michael Genkin*, 'mgenkin@smu.edu.sg'
 
-Liyuan Chen [aut]
+George Berry, 'geb97@cornell.edu'
 
-Matthew Brashears [aut], 'meb299@cornell.edu'
+Liyuan Chen,
 
-Maintainer: csnp@cornell.edu
+Matthew Brashears, 'brasheam@mailbox.sc.edu'
+
+*Both authors contributed equally to this work and their names are randomly ordered
+
+Maintainer: Cheng Wang <'cwang3@nd.edu'>
 }
 \references{
 Brashears, E. Matthew, Michael Genkin, and Chan S. Suh. ``In the Organization's Shadow: How Individual Behavior is Shaped by Organizational Leakage''
 
 Genkin, Michael, Matthew E. Brashears, and Chan S. Suh ``Why Social Networks Differ: The Role of Organizational Competition''
 
-McPherson, J.Miller. (2004). A Blau space primer: prolegomenon to an ecology of affiliation. Industrial and Corporate Change, 13(1), 263-280.
+McPherson, J. Miller. (1983). ``Ecology of Affiliatio''. American Sociological Review, 48(4), 519-532. 
 
-McPherson, J. Miller. (1981). A dynamic model of voluntary affiliation. Social Forces, 59(3), 705-728.}
+McPherson, J. Miller. (2004). ``A Blau space primer: prolegomenon to an ecology of affiliation''. Industrial and Corporate Change, 13(1), 263-280.
+}
 \keyword{ package }
 %%\seealso{
 %%~~ Optional links to other man pages, e.g. ~~

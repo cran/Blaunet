@@ -35,10 +35,7 @@ List of 3\cr
   ..$ Bruce: int [1:10] 0 0 0 0 0 0 0 0 1 0\cr
 }
 \details{
-This dataset was created solely to illustrate the dyadic Blau status functions of Blaunet. It contains a data.frame with two small ecologies. Individuals can belong to either a liberal or conservative organization (or both). Information is provided on age, education, and income. Individuals exist within a network. We provide the network in both adjacency matrix and edgelist formats for illustrative purposes.
-
-Most real datasets that contain networks and memberships are proprietary and cannot be freely shared even as excerpts. Users who are interested in working with actual data are urged to consider the restricted version of the Adolescent Health Dataset, which contains demographic, membership, and socio-metric data: \url{http://www.cpc.unc.edu/projects/addhealth/data/restricteduse}.
-
+This dataset is a small dataset containing 10 individuals in two non-overlapping locations (as cities), created solely to illustrate the functions of the BlauNet package.  Affiliation variables contains membership in a liberal or conservative organization (or both).  Demographic data contains variables of age, education, and income.  Individual-level network data is also available in both adjacency matrix and edge list formats.
 }
 \source{
 Data was created by the Blaunet team. All data is fictional and was created with a random number generator. 

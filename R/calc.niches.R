@@ -45,6 +45,7 @@ function(blauObj, dev.range) {
         stdDev <- sqrt(sdNumerator/sdDenominator)
         topbounds[memCyc, dimCyc] <- means[memCyc, dimCyc] + stdDev * dev.range
         lowbounds[memCyc, dimCyc] <- means[memCyc, dimCyc] - stdDev * dev.range
+        if (lowbounds[memCyc, dimCyc]<0 & min(dimRows,na.rm=T)>=0) lowbounds[memCyc, dimCyc] <- 0
       }
     }
   }
