@@ -169,6 +169,9 @@ showblaububble <- function(h,...) {
       blaububble[which(distmat<=u6)] <- 1
       blaububble[which(distmat>u6)] <- 0
       diag(blaububble) <- 0
+      distmat <- data.frame(distmat)
+      distmat <- data.frame(cbind(as.matrix(cov1[which(colnames(cov1)==u1)]),distmat))
+      colnames(distmat) <- c("ego",as.matrix(cov1[which(colnames(cov1)==u1)]))
       blaububble <- data.frame(blaububble)
       rownames(blaububble) <- as.matrix(cov1[which(colnames(cov1)==u1)])
       colnames(blaububble) <- as.matrix(cov1[which(colnames(cov1)==u1)])
@@ -177,6 +180,28 @@ showblaububble <- function(h,...) {
       thdlevel <- gwindow("Blau Bubble Results", width=20)
       thdg <- gpanedgroup(cont = thdlevel, horizontal = TRUE)
       tg <- ggroup(cont = thdg, horizontal = TRUE)
+      button <- gbutton("Blau Distance Matrix", cont = tg, handler = function(h, ...) {
+        fthlevel1 <- gwindow("Blau Distance Matrix",width = 800, height = 600)
+        fg1 <- ggroup(horizontal = FALSE, cont = fthlevel1)
+        button1 <- gbutton("Save as csv file: blaudistance.csv", expand = FALSE, cont = fg1, handler = function(h, ...) {
+          write.table(distmat, "blaudistance.csv", row.names=F, col.names=T, sep=",")
+        })
+        button2 <- gbutton("Save as R file: blaudistance.Rdata", expand = FALSE, cont = fg1, handler = function(h, ...) {
+          save(distmat, file="blaudistance.Rdata")
+        })
+        button3 <- gbutton("Save as SAS file: blaudistance.txt & blaudistance.sas", expand = FALSE, cont = fg1, handler = function(h, ...) {
+          write.foreign(distmat, "blaudistance.txt", "blaudistance.sas",   package="SAS")
+        })
+        button4 <- gbutton("Save as Stata file: blaudistance.dta", expand = FALSE, cont = fg1, handler = function(h, ...) {
+          write.dta(distmat, ("blaudistance.dta"))
+        })
+        button5 <- gbutton("Save as SPSS file: blaudistance.txt & blaudistance.sps", expand = FALSE, cont = fg1, handler = function(h, ...) {
+          write.foreign(distmat, "blaudistance.txt", "blaudistance.sps",   package="SPSS")
+        })
+        gseparator(cont = fg1)
+        vars <- gtable(distmat, expand = TRUE, cont = fg1)
+      })
+      addSpace(tg, 60) 
       button <- gbutton("Blau Bubble Matrix", cont = tg, handler = function(h, ...) {
         fthlevel1 <- gwindow("Blau Bubble Matrix",width = 800, height = 600)
         fg1 <- ggroup(horizontal = FALSE, cont = fthlevel1)
@@ -201,28 +226,36 @@ showblaububble <- function(h,...) {
       addSpace(tg, 60) 
       button <- gbutton("Blau Bubble List", cont = tg, handler = function(h, ...) {
         blaublist <- data.frame(as.matrix(network(blaububble),matrix.type="edgelist"))
-        dim.distance <- rep(0,nrow(blaublist))
-        for (x in 1:nrow(blaublist)){
-          dim.distance[x] <- distmat[blaublist[x,1],blaublist[x,2]]
-        }
-        rm(x)
-        blaublist <- cbind(blaublist,dim.distance)
-        colnames(blaublist) <- c("i","j","dim.distance")
-        if ("el" %in% ls(envir=.GlobalEnv)) {
-          geodesic.distance <- present.edges <- rep(0,nrow(blaublist))
-          tempadj <- symmetrize(adj1,rule="weak")
-          tempel <- data.frame(as.matrix(network(tempadj),matrix.type="edgelist"))
-          colnames(tempel) <- c("i","j")
-          gd <- geodist(network(symmetrize(adj1,rule="weak")))$gdist
+        if (nrow(blaublist)>0) {
+          dim.distance <- rep(0,nrow(blaublist))
           for (x in 1:nrow(blaublist)){
-            if (nrow(merge(blaublist[x,1:2],tempel))>0) present.edges[x] <- 1
-            geodesic.distance[x] <- gd[blaublist[x,1],blaublist[x,2]]
+            dim.distance[x] <- distmat[blaublist[x,1],blaublist[x,2]]
           }
-          blaublist <- cbind(blaublist,present.edges,geodesic.distance)
           rm(x)
+          blaublist <- cbind(blaublist,dim.distance)
+          colnames(blaublist) <- c("i","j","dim.distance")
+          if ("el" %in% ls(envir=.GlobalEnv)) {
+            geodesic.distance <- present.edges <- rep(0,nrow(blaublist))
+            tempadj <- symmetrize(adj1,rule="weak")
+            tempel <- data.frame(as.matrix(network(tempadj),matrix.type="edgelist"))
+            colnames(tempel) <- c("i","j")
+            gd <- geodist(network(symmetrize(adj1,rule="weak")))$gdist
+            for (x in 1:nrow(blaublist)){
+              if (nrow(merge(blaublist[x,1:2],tempel))>0) present.edges[x] <- 1
+              geodesic.distance[x] <- gd[blaublist[x,1],blaublist[x,2]]
+            }
+            blaublist <- cbind(blaublist,present.edges,geodesic.distance)
+            rm(x)
+          }
+          blaublist[,1] <- as.matrix(cov1[which(colnames(cov1)==u1)])[blaublist[,1]]
+          blaublist[,2] <- as.matrix(cov1[which(colnames(cov1)==u1)])[blaublist[,2]]
+        } else {
+          if ("el" %in% ls(envir=.GlobalEnv)) {
+            blaublist <- data.frame(i=double(),j=double(),dim.distance=double(),present.edges=double(),geodesic.distance=double())
+          } else {
+            blaublist <- data.frame(i=double(),j=double(),dim.distance=double())
+          }
         }
-        blaublist[,1] <- as.matrix(cov1[which(colnames(cov1)==u1)])[blaublist[,1]]
-        blaublist[,2] <- as.matrix(cov1[which(colnames(cov1)==u1)])[blaublist[,2]]
         fthlevel2 <- gwindow("Blau Bubble List",width = 800, height = 600)
         fg2 <- ggroup(horizontal = FALSE, cont = fthlevel2)
         button1 <- gbutton("Save as csv file: blaububblelist.csv", expand = FALSE, cont = fg2, handler = function(h, ...) {

@@ -1,4 +1,4 @@
-showdiagnostic <- function(h,...) {
+nicheplot <- function(h,...) {
   if ("cov" %in% ls(envir=.GlobalEnv)==FALSE) {gmessage("Sorry! Attribute file is not loaded.", parent = window)} else {
   assign("d1",character(0),envir=.GlobalEnv)
   assign("d2",character(0),envir=.GlobalEnv)
@@ -11,7 +11,7 @@ showdiagnostic <- function(h,...) {
   assign("d9",character(0),envir=.GlobalEnv)
   assign("m1",names(cov),envir=.GlobalEnv)
   assign("m3",names(cov),envir=.GlobalEnv)
-  toplevel <- gwindow("Niche Diagnostic Plot", width=800, height=800, parent = window)
+  toplevel <- gwindow("Niche Plot", width=800, height=800, parent = window)
   tbl0 <- gtable(m1,expand=TRUE,multiple=TRUE,cont=toplevel)
   cg <- gpanedgroup(width=100, cont = toplevel)
   cg1 <- ggroup(horizontal = FALSE, cont = cg)
@@ -177,11 +177,11 @@ showdiagnostic <- function(h,...) {
     if (length(d7)>0) tmpweight <- d7 else tmpweight <- NULL  
     bcolors <- rep(c(26,116,142,47,8,12,31,32,33,41,51,53,62,139,151,175,153,85,450,477),5)
     if (length(d2)>0) {
-      extralevel <- gwindow("Diagnostic Plot Options", width=600, height=600, parent = window)
+      extralevel <- gwindow("Niche Plot Options", width=600, height=600, parent = window)
       extrag <- ggroup(cont = extralevel, use.scrollwindow=T, horizontal = FALSE)
       tbl <- glayout(cont = extrag)
       j <- 1
-      tbl[j,1] <- "Please select which ecology you want to make diagnostic plot:"
+      tbl[j,1] <- "Please select which ecology you want to make niche plot:"
       tbl[j,2] <- gcheckboxgroup(c("all",as.matrix(unique(cov[which(colnames(cov)==d2)]))), handler = function(h,...){
         assign("d9",svalue(h$obj),envir=.GlobalEnv)
       })

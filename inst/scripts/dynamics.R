@@ -182,10 +182,10 @@ showdynamics <- function(h,...) {
       for (i in 1:length(y)) {
         k1 <- x[which(x[,i+3]==1),c(1:3,i+3)]
         k2 <- table(k1[,2],k1[,3])
-        for (m in 1:nrow(k2)) {
-          for (n in 1:ncol(k2)) {
-            o <- which(cc[,1]==as.numeric(row.names(k2)[m]) & cc[,2]==as.numeric(colnames(k2)[n]))
-            cc[o,i+2] <- k2[m,n]/sum(k2)
+        for (f in 1:m1) {
+          for (g in 1:n1) {
+            o <- which(cc[,1]==as.numeric(rownames(k2)[f]) & cc[,2]==as.numeric(colnames(k2)[g]))
+            cc[o,(i+2)] <- k2[f,g]/sum(k2)
           }
         }
       }
@@ -202,10 +202,10 @@ showdynamics <- function(h,...) {
       for (i in 1:length(y)) {
         k1 <- x[which(x[,i+length(y)+3]==1),c(1:3,i+length(y)+3)]
         k2 <- table(k1[,2],k1[,3])
-        for (m in 1:nrow(k2)) {
-          for (n in 1:ncol(k2)) {
-            o <- which(mr[,1]==as.numeric(row.names(k2)[m]) & mr[,2]==as.numeric(colnames(k2)[n]))
-            mr[o,i+2] <- k2[m,n]/sum(k2)
+        for (f in 1:m1) {
+          for (g in 1:n1) {
+            o <- which(mr[,1]==as.numeric(rownames(k2)[f]) & mr[,2]==as.numeric(colnames(k2)[g]))
+            mr[o,(i+2)] <- k2[f,g]/sum(k2)
           }
         }
       }
@@ -261,8 +261,8 @@ showdynamics <- function(h,...) {
           button1 <- gbutton("Plot Carrying Capacity", cont = cg2, width=20, handler = function(h, ...) {
             x1 <- x2 <- y1 <- y2 <- z1 <- z2 <- rep(0,length(dy5))
             for (i in 1:length(dy5)) {
-              x1[i] <- x2[i] <- mean(cov[which(cov[,dy5[i]]==1),dy4[1]],na.rm = TRUE)
-              y1[i] <- y2[i] <- mean(cov[which(cov[,dy5[i]]==1),dy4[2]],na.rm = TRUE)
+              x1[i] <- x2[i] <- mean(attr[which(attr[,dy5[i]]==1),dy4[1]],na.rm = TRUE)
+              y1[i] <- y2[i] <- mean(attr[which(attr[,dy5[i]]==1),dy4[2]],na.rm = TRUE)
               z1[i] <- min(cc[,(3+length(dy5))])
               z2[i] <- max(cc[,(3+length(dy5))])
             }
@@ -353,8 +353,8 @@ showdynamics <- function(h,...) {
           button2 <- gbutton("Plot Membership Rate", cont = cg2, width=20, handler = function(h, ...) {
             x1 <- x2 <- y1 <- y2 <- z1 <- z2 <- rep(0,length(dy5))
             for (i in 1:length(dy5)) {
-              x1[i] <- x2[i] <- mean(cov[which(cov[,dy5[i]]==1),dy4[1]],na.rm = TRUE)
-              y1[i] <- y2[i] <- mean(cov[which(cov[,dy5[i]]==1),dy4[2]],na.rm = TRUE)
+              x1[i] <- x2[i] <- mean(attr[which(attr[,dy5[i]]==1),dy4[1]],na.rm = TRUE)
+              y1[i] <- y2[i] <- mean(attr[which(attr[,dy5[i]]==1),dy4[2]],na.rm = TRUE)
               z1[i] <- min(mr[,(3+length(dy5))])
               z2[i] <- max(mr[,(3+length(dy5))])
             }
@@ -445,8 +445,8 @@ showdynamics <- function(h,...) {
           button3 <- gbutton("Plot Intensity of Exploitation", cont = cg2, width=20, handler = function(h, ...) {
             x1 <- x2 <- y1 <- y2 <- z1 <- z2 <- rep(0,length(dy5))
             for (i in 1:length(dy5)) {
-              x1[i] <- x2[i] <- mean(cov[which(cov[,dy5[i]]==1),dy4[1]],na.rm = TRUE)
-              y1[i] <- y2[i] <- mean(cov[which(cov[,dy5[i]]==1),dy4[2]],na.rm = TRUE)
+              x1[i] <- x2[i] <- mean(attr[which(attr[,dy5[i]]==1),dy4[1]],na.rm = TRUE)
+              y1[i] <- y2[i] <- mean(attr[which(attr[,dy5[i]]==1),dy4[2]],na.rm = TRUE)
               z1[i] <- min(ie[,4])
               z2[i] <- max(ie[,4])
             }

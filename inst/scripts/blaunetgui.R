@@ -35,7 +35,7 @@ source('browse.R')
 source('network.R')
 source('graph.R')
 source('dimensions.R')
-source('diagnostic.R')
+source('nicheplot.R')
 source('analysis.R')
 source('dynamics.R')
 source('blaububbles.R')
@@ -75,7 +75,7 @@ action_list = list(
   HistogramOutdegree = gaction(label = "Histogram Out-degree", handler = showhoutdegree, parent = window),
   HistogramIndegree = gaction(label = "Histogram In-degree", handler = showhindegree, parent = window),
   Dimensions = gaction(label = "Salient Dimensions", handler = showdimensions, parent = window), 
-  Diagnostic= gaction(label = "Niche Diagnostic Plot", handler = showdiagnostic, parent = window),  
+  Nicheplot= gaction(label = "Niche Plot", handler = nicheplot, parent = window),  
   Analysis = gaction(label = "Niche Analysis", handler = showanalysis, parent = window),
   Dynamics = gaction(label = "Niche Dynamics", handler = showdynamics, parent = window), 
   Blaububbles = gaction(label = "Blau Bubbles", handler = showblaububble, parent = window),  
@@ -118,7 +118,7 @@ menu_bar_list <- list(Data = list(
              ),
            Analysis = list(
              Dimensions = action_list$Dimensions,
-             Diagnostic = action_list$Diagnostic,
+             Nicheplot = action_list$Nicheplot,
              Analysis = action_list$Analysis,
              Dynamics = action_list$Dynamics,
              Blaububble = action_list$Blaububble
@@ -145,7 +145,7 @@ if (Sys.info()[1]=="Windows") {
 }
 glabel("Title: A Toolkit for Calculating, Visualizing, and Analyzing Social Distance Using Blau Status Analysis ", container=group, anchor=c(-1,1))
 glabel("Depends: R (>= 3.0.0), network (>= 1.7.1)", container=group, anchor=c(-1,1))
-glabel("Version: 2.0.1", container=group, anchor=c(-1,1))
+glabel("Version: 2.0.2", container=group, anchor=c(-1,1))
 glabel("Author: Cheng Wang*, Michael Genkin*, George Berry, Liyuan Chen, Matthew Brashears *Both authors contributed equally to this work and their names are randomly ordered", container=group, anchor=c(-1,1))
 glabel("Maintainer: Cheng Wang <cwang3@nd.edu>", container=group, anchor=c(-1,1))
 glabel("Description: An integrated set of tools to calculate, visualize, and analyze positions in social distance between individuals belonging to organizational groups. 
@@ -153,7 +153,7 @@ glabel("Description: An integrated set of tools to calculate, visualize, and ana
 glabel("License: GPL-3", container=group, anchor=c(-1,1))
 glabel("BlauNet Users Facebook group: https://www.facebook.com/groups/425015561030239/", container=group, anchor=c(-1,1))
 glabel("Repository: CRAN", container=group, anchor=c(-1,1))
-glabel("Date/Publication: 2015-12-27 11:14:43", container=group, anchor=c(-1,1))
+glabel("Date/Publication: 2016-03-24 16:14:43", container=group, anchor=c(-1,1))
 
 sb <- gstatusbar("", container=window)
 #id <- addHandlerUnrealize(window, handler = function(h,...) {!gconfirm("Really close", parent = h$obj)})
