@@ -182,8 +182,8 @@ showdynamics <- function(h,...) {
       for (i in 1:length(y)) {
         k1 <- x[which(x[,i+3]==1),c(1:3,i+3)]
         k2 <- table(k1[,2],k1[,3])
-        for (f in 1:m1) {
-          for (g in 1:n1) {
+        for (f in 1:(nrow(k2))) {
+          for (g in 1:(ncol(k2))) {
             o <- which(cc[,1]==as.numeric(rownames(k2)[f]) & cc[,2]==as.numeric(colnames(k2)[g]))
             cc[o,(i+2)] <- k2[f,g]/sum(k2)
           }
@@ -202,8 +202,8 @@ showdynamics <- function(h,...) {
       for (i in 1:length(y)) {
         k1 <- x[which(x[,i+length(y)+3]==1),c(1:3,i+length(y)+3)]
         k2 <- table(k1[,2],k1[,3])
-        for (f in 1:m1) {
-          for (g in 1:n1) {
+        for (f in 1:(nrow(k2))) {
+          for (g in 1:(ncol(k2))) {
             o <- which(mr[,1]==as.numeric(rownames(k2)[f]) & mr[,2]==as.numeric(colnames(k2)[g]))
             mr[o,(i+2)] <- k2[f,g]/sum(k2)
           }

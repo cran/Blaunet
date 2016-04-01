@@ -39,7 +39,7 @@ source('nicheplot.R')
 source('analysis.R')
 source('dynamics.R')
 source('blaububbles.R')
-showabout <- function(h,...) gmessage("Blaunet graphic package 2.0.1", parent = window)
+showabout <- function(h,...) gmessage("Blaunet graphic package 2.0.3", parent = window)
 commandpdf <- function(h,...) {
   if (Sys.info()[1]=="Windows") shell.exec("command.pdf") 
   else if (Sys.info()[1]=="Darwin") system("open command.pdf")
@@ -145,7 +145,7 @@ if (Sys.info()[1]=="Windows") {
 }
 glabel("Title: A Toolkit for Calculating, Visualizing, and Analyzing Social Distance Using Blau Status Analysis ", container=group, anchor=c(-1,1))
 glabel("Depends: R (>= 3.0.0), network (>= 1.7.1)", container=group, anchor=c(-1,1))
-glabel("Version: 2.0.2", container=group, anchor=c(-1,1))
+glabel("Version: 2.0.3", container=group, anchor=c(-1,1))
 glabel("Author: Cheng Wang*, Michael Genkin*, George Berry, Liyuan Chen, Matthew Brashears *Both authors contributed equally to this work and their names are randomly ordered", container=group, anchor=c(-1,1))
 glabel("Maintainer: Cheng Wang <cwang3@nd.edu>", container=group, anchor=c(-1,1))
 glabel("Description: An integrated set of tools to calculate, visualize, and analyze positions in social distance between individuals belonging to organizational groups. 
@@ -153,7 +153,7 @@ glabel("Description: An integrated set of tools to calculate, visualize, and ana
 glabel("License: GPL-3", container=group, anchor=c(-1,1))
 glabel("BlauNet Users Facebook group: https://www.facebook.com/groups/425015561030239/", container=group, anchor=c(-1,1))
 glabel("Repository: CRAN", container=group, anchor=c(-1,1))
-glabel("Date/Publication: 2016-03-24 16:14:43", container=group, anchor=c(-1,1))
+glabel("Date/Publication: 2016-04-01 16:14:43", container=group, anchor=c(-1,1))
 
 sb <- gstatusbar("", container=window)
 #id <- addHandlerUnrealize(window, handler = function(h,...) {!gconfirm("Really close", parent = h$obj)})
