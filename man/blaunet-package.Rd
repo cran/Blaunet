@@ -11,8 +11,8 @@ An integrated set of tools to calculate and analyze Blau statuses quantifying so
 \tabular{ll}{
 Package: \tab Blaunet\cr
 Type: \tab Package\cr
-Version: \tab 2.0.3\cr
-Date: \tab 2016-04-01\cr
+Version: \tab 2.0.4\cr
+Date: \tab 2016-04-12\cr
 Depends: \tab network (>= 1.7.1)\cr
 License: \tab GPL-3\cr
 }

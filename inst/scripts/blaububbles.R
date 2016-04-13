@@ -228,8 +228,9 @@ showblaububble <- function(h,...) {
         blaublist <- data.frame(as.matrix(network(blaububble),matrix.type="edgelist"))
         if (nrow(blaublist)>0) {
           dim.distance <- rep(0,nrow(blaublist))
+          distmattmp <- distmat[,-1]
           for (x in 1:nrow(blaublist)){
-            dim.distance[x] <- distmat[blaublist[x,1],blaublist[x,2]]
+            dim.distance[x] <- distmattmp[blaublist[x,1],blaublist[x,2]]
           }
           rm(x)
           blaublist <- cbind(blaublist,dim.distance)

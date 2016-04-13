@@ -1,4 +1,4 @@
-12b6660cf73afda69152e5826ed8ff6c *DESCRIPTION
+7627f330a6f64837cb499be3a4d135e2 *DESCRIPTION
 6deffdc9ecfd1ea62c9e4c3833c711e7 *NAMESPACE
 511ffc67b4d63ed92db7fe7662ee31ef *R/active.R
 50d9ca22e40a5f73619d43b6bbd31eb1 *R/blau.R
@@ -30,10 +30,10 @@ b41462e2533e7ca08dc6e71c50e2b835 *data/gss74_87.rda
 0e3b2abbbcbfecae666eaf39bc25fe50 *data/schlattr.rda
 e21dee9b52a094a68f02923b771ec06f *data/schlnet.rda
 8b4399c66d0e05875655f1d2730e0e39 *inst/scripts/analysis.R
-444cce6e58cba1c57ce818f68d83ad79 *inst/scripts/blaububbles.R
+5259733f717179f5c033dc63b94415e5 *inst/scripts/blaububbles.R
 8a966b1619e064efab7332e5b5ed4538 *inst/scripts/blaunetgui.R
 3ba2e58cc5599dcfc49c1bf842027245 *inst/scripts/browse.R
-eaa706a0644335e19a06f34b3fa447a8 *inst/scripts/command.pdf
+1ab1880663a82b0aff5d178574ccdd3a *inst/scripts/command.pdf
 a0d002fcbd3229f3dc7a524b09feb2b3 *inst/scripts/dimensions.R
 bdb32e238bcc68deae990a5f91e0bf1a *inst/scripts/dynamics.R
 b73fe50047805fe7b730be41ebcd10ee *inst/scripts/graph.R
@@ -45,7 +45,7 @@ d68a47b9ef18f5734465bc3569afe930 *man/BSANet.Rd
 31fcd6c25e8414ed7e3e6ce2ab2f344d *man/TwoCities.Rd
 f4083b72a94ea83f87f4afb17a4c8b4e *man/active.Rd
 b29c2208d54c33393220ca2ec7b369f5 *man/blau.Rd
-380d09a216fa970be31e39202607ef8f *man/blaunet-package.Rd
+bdfd515480c41afc9baa917b717da4b6 *man/blaunet-package.Rd
 c5e59be0192e48201dc3cc6b9814a4d0 *man/dyadic.Rd
 4febfd65e4012ea25a0a7502aea61ccd *man/ecology.summary.Rd
 6ecb1d91f0800ab2ba998e52e9ecd4aa *man/export.dyadic.Rd
