@@ -14,7 +14,7 @@ loadfile <- function(h,...) {
       }
       gmessage(paste("Congratulations! Your attribute file ",f," is now loaded",sep=''), parent = window)
     } else if (grepl('[:punct:.]dta',f)) {
-      c1 <- read.dta(f)
+      c1 <- data.frame(read_dta(f))
       assign("cov",c1,envir=.GlobalEnv)
       gmessage(paste("Congratulations! Your attribute file ",f," is now loaded",sep=''), parent = window)
     } else if (grepl('[:punct:.]csv',f)) {
@@ -46,7 +46,7 @@ loadnet <- function(h,...) {
     } else if (grepl('[:punct:.]paj',f)) {
       net <- network(read.paj(f))
     } else if (grepl('[:punct:.]dta',f)) {
-      net <- network(read.dta(f))
+      net <- network(data.frame(read_dta(f)))
     } else if (grepl('[:punct:.]csv',f)) {
       net <- network(read.csv(f,header=F,sep=","))
     } else if (grepl('[:punct:.]sav',f)) {

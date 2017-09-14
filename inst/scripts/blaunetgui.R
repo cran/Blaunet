@@ -2,13 +2,13 @@
 rm(list=ls())
 if (Sys.info()[1]=="Windows") {
   packages <- c("RGtk2", "cairoDevice", "gWidgets", "gWidgetsRGtk2", "plot3D", "plot3Drgl", 
-              "network", "sna", "foreign", "ergm")
+              "network", "sna", "haven", "foreign", "ergm")
 } else {
-  if (("RGtk2" %in% installed.packages())==FALSE) install.packages("http://cran.r-project.org/src/contrib/RGtk2_2.20.31.tar.gz", repos = NULL, type = "source")
-  if (("cairoDevice" %in% installed.packages())==FALSE) install.packages("http://cran.r-project.org/src/contrib/cairoDevice_2.23.tar.gz", repos = NULL, type = "source")
-  if (("gWidgets" %in% installed.packages())==FALSE) install.packages("http://cran.r-project.org/src/contrib/gWidgets_0.0-54.tar.gz", repos = NULL, type = "source")
-  if (("gWidgetsRGtk2" %in% installed.packages())==FALSE) install.packages("http://cran.r-project.org/src/contrib/gWidgetsRGtk2_0.0-83.tar.gz", repos = NULL, type = "source")
-  packages <- c("plot3D", "plot3Drgl", "network", "sna", "foreign", "ergm")
+  if (("RGtk2" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/RGtk2_2.20.33.tar.gz", repos = NULL, type = "source")
+  if (("cairoDevice" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/cairoDevice_2.24.tar.gz", repos = NULL, type = "source")
+  if (("gWidgets" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/gWidgets_0.0-54.tar.gz", repos = NULL, type = "source")
+  if (("gWidgetsRGtk2" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/gWidgetsRGtk2_0.0-84.tar.gz", repos = NULL, type = "source")
+  packages <- c("plot3D", "plot3Drgl", "network", "sna", "haven", "ergm")
 }
 if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
   install.packages(setdiff(packages, rownames(installed.packages())),repos="http://cran.r-project.org")  
@@ -20,6 +20,7 @@ require(RGtk2)
 require(cairoDevice)
 require(plot3D)
 require(plot3Drgl)
+require(haven)
 require(foreign)
 require(network)
 require(sna)
@@ -39,7 +40,7 @@ source('nicheplot.R')
 source('analysis.R')
 source('dynamics.R')
 source('blaububbles.R')
-showabout <- function(h,...) gmessage("Blaunet graphic package 2.0.3", parent = window)
+showabout <- function(h,...) gmessage("BlauNet graphic package 2.0.5", parent = window)
 commandpdf <- function(h,...) {
   if (Sys.info()[1]=="Windows") shell.exec("command.pdf") 
   else if (Sys.info()[1]=="Darwin") system("open command.pdf")
@@ -130,7 +131,7 @@ menu_bar_list <- list(Data = list(
              )
            )
 
-window <- gwindow("Blaunet", width = 1024, height = 600)
+window <- gwindow("BlauNet", width = 1024, height = 600)
 group <- ggroup(horizontal = FALSE, cont = window)
 menu_bar <- gmenu(menu_bar_list, cont = window)
 tool_bar <- gtoolbar(tool_bar_list, cont = window)
@@ -144,16 +145,18 @@ if (Sys.info()[1]=="Windows") {
   button <- gbutton("Set working directory", cont = group, handler = function(h, ...) setwd(svalue(txt)))
 }
 glabel("Title: A Toolkit for Calculating, Visualizing, and Analyzing Social Distance Using Blau Status Analysis ", container=group, anchor=c(-1,1))
-glabel("Depends: R (>= 3.0.0), network (>= 1.7.1)", container=group, anchor=c(-1,1))
-glabel("Version: 2.0.3", container=group, anchor=c(-1,1))
+glabel("Depends: R (>= 3.0.0)", container=group, anchor=c(-1,1))
+glabel("Imports: gWidgets, gWidgetsRGtk2, RGtk2, cairoDevice, plot3D, plot3Drgl, rgl, network, sna, ergm, statnet.common, haven, foreign", container=group, anchor=c(-1,1))
+glabel("Version: 2.0.5", container=group, anchor=c(-1,1))
 glabel("Author: Cheng Wang*, Michael Genkin*, George Berry, Liyuan Chen, Matthew Brashears *Both authors contributed equally to this work and their names are randomly ordered", container=group, anchor=c(-1,1))
 glabel("Maintainer: Cheng Wang <cwang3@nd.edu>", container=group, anchor=c(-1,1))
-glabel("Description: An integrated set of tools to calculate, visualize, and analyze positions in social distance between individuals belonging to organizational groups. 
+glabel("Description: An integrated set of tools to calculate, visualize, and analyze positions in social distance between individuals belonging to covert organizational groups. 
                       Relational (network) data may be incorporated for additional analysis.", container=group, anchor=c(-1,1))
 glabel("License: GPL-3", container=group, anchor=c(-1,1))
 glabel("BlauNet Users Facebook group: https://www.facebook.com/groups/425015561030239/", container=group, anchor=c(-1,1))
+glabel("Funding: This project is supported by Defense Threat Reduction Agency (DTRA) Grant HDTRA-10-1-0043.", container=group, anchor=c(-1,1))
 glabel("Repository: CRAN", container=group, anchor=c(-1,1))
-glabel("Date/Publication: 2016-04-01 16:14:43", container=group, anchor=c(-1,1))
+glabel("Date/Publication: 2017-09-14 16:14:43", container=group, anchor=c(-1,1))
 
 sb <- gstatusbar("", container=window)
 #id <- addHandlerUnrealize(window, handler = function(h,...) {!gconfirm("Really close", parent = h$obj)})

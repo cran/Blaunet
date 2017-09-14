@@ -10,7 +10,7 @@ showanalysis <- function(h,...) {
   assign("b8","FALSE",envir=.GlobalEnv)
   assign("m1",names(cov),envir=.GlobalEnv)
   assign("m3",names(cov),envir=.GlobalEnv)
-  toplevel <- gwindow("Blaunet Analysis", width=800, height=800, parent = window)
+  toplevel <- gwindow("BlauNet Analysis", width=800, height=800, parent = window)
   tbl0 <- gtable(m1,expand=TRUE,multiple=TRUE,cont=toplevel)
   cg <- gpanedgroup(width=100, cont = toplevel)
   cg1 <- ggroup(horizontal = FALSE, cont = cg)

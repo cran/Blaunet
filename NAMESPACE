@@ -1,4 +1,4 @@
-export(blau, niches, nodal.local, nodal.global, nodal.network, dyadic, export.nodal, export.dyadic, niche.summary, ecology.summary, active)
+export(blau, blaunetgui, niches, nodal.local, nodal.global, nodal.network, dyadic, export.nodal, export.dyadic, niche.summary, ecology.summary, active)
 importFrom("stats", "complete.cases", "cov", "dist", "mahalanobis", "na.exclude")
 importFrom("utils", "type.convert")
 import(network)
