@@ -55,7 +55,7 @@ Returns an object of class \code{data.frame} that contains the five summary meas
 \examples{
 data(TwoCities)
 b <- blau(TwoCities, node.ids = 'respID', ecology.ids = 'samp')
-b <- niches(b)
+b <- niches(b, dev.range = rep(1.5, 10)) # 10 is the number of dimensions
 niche.summary <- niche.summary(b)
 
 }

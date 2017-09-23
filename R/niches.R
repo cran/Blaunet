@@ -1,5 +1,5 @@
 niches <-
-function(blauObj, dev.range = 1.5, ecologies.off = FALSE){
+function(blauObj, dev.range, ecologies.off = FALSE){
   uniqueEcologies <-  unique(blauObj$ids[,2])
 
   if (length(uniqueEcologies) == 1 || ecologies.off == TRUE){

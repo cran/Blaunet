@@ -43,8 +43,8 @@ function(blauObj, dev.range) {
           sdNumerator <- sdNumerator + (meanWeights[dataCyc] * (meanData[dataCyc] - means[memCyc,dimCyc])^2 )
         }
         stdDev <- sqrt(sdNumerator/sdDenominator)
-        topbounds[memCyc, dimCyc] <- means[memCyc, dimCyc] + stdDev * dev.range
-        lowbounds[memCyc, dimCyc] <- means[memCyc, dimCyc] - stdDev * dev.range
+        topbounds[memCyc, dimCyc] <- means[memCyc, dimCyc] + stdDev * dev.range[dimCyc]
+        lowbounds[memCyc, dimCyc] <- means[memCyc, dimCyc] - stdDev * dev.range[dimCyc]
         if (lowbounds[memCyc, dimCyc]<0 & min(dimRows,na.rm=T)>=0) lowbounds[memCyc, dimCyc] <- 0
       }
     }

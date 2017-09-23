@@ -1,5 +1,5 @@
 nodal.local <-
-function(blauObj, focal.niche=NULL, dev.range=1.5, ecologies.off=FALSE){
+function(blauObj, focal.niche=NULL, dev.range, ecologies.off=FALSE){
   
   if (is.null(focal.niche)){
     return("Primary Membership needed for nodal.local")

@@ -44,7 +44,7 @@ Returns an object of class \code{data.frame} that contains a niche-by-niche matr
 \examples{
 data(TwoCities)
 b <- blau(TwoCities, node.ids = 'respID', ecology.ids = 'samp')
-b <- niches(b)
+b <- niches(b, dev.range = rep(1.5, 10)) # 10 is the number of dimensions
 ecology.summary <- ecology.summary(b)
 
 }

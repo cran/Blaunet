@@ -1,5 +1,5 @@
 nodal.network <-
-function(blauObj, dev.range = 1.5, ecologies.off = FALSE){
+function(blauObj, dev.range, ecologies.off = FALSE){
 
   if (ecologies.off == TRUE){
     blauObj <- niches(blauObj, dev.range, ecologies.off)

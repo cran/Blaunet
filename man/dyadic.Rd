@@ -8,7 +8,7 @@
     Computes six dyadic measures (computed for each edge in the edgelist). They are Euclidean Distance, Mahalanobis Distance, Co-nichers, Co-outsiders, Straddlers, Spanners.
 }
 \usage{
-dyadic(blauObj, dev.range = 1.5, ecologies.off = FALSE, m.dist = TRUE)
+dyadic(blauObj, dev.range, ecologies.off = FALSE, m.dist = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -16,7 +16,7 @@ dyadic(blauObj, dev.range = 1.5, ecologies.off = FALSE, m.dist = TRUE)
     An object of class blau initialized with the function \code{blau}. Individuals will automatically be placed in niches with the function \code{niches} if this has not been done manually.
 }
   \item{dev.range}{
-    Defaults to 1.5. When creating niches, indicates standard deviation around the mean in each dimension to include in niche. A larger value will make niches larger and therefore include more individuals.}
+    When creating niches, indicates standard deviation around the mean in each dimension to include in niche. A larger value will make niches larger and therefore include more individuals.}
   \item{ecologies.off}{
     Defaults to \code{FALSE}. If set to \code{TRUE}, treats all individuals as in the same ecology, even if ecology identifiers (\code{ecology.ids}) have been specified. Will call the niches function and overwrite its output even if it has been manually called by the user.
 }
@@ -68,12 +68,12 @@ adj <- BSANet$adj #adjacency matrix
 b <- blau(square.data, node.ids = 'person', ecology.ids = 'city', graph = el)
 #implicitly a directed edgelist
 #will automatically compute niches
-b <- dyadic(b)
+b <- dyadic(b, dev.range = rep(1.5, 3)) # 3 is the number of dimensions
 
 #adjacency matricies are also OK
 b <- blau(square.data, node.ids = 'person', ecology.ids = 'city', graph = adj)
 #will automatically compute niches
-b <- dyadic(b)
+b <- dyadic(b, dev.range = rep(1.5, 3)) # 3 is the number of dimensions
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

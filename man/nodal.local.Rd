@@ -8,7 +8,7 @@
     Computes two measures: whether an individual is within the niche of the primary membership specified, and whether the individual is a member of the primary membership but outside of that membership's niche.
 }
 \usage{
-nodal.local(blauObj, focal.niche = NULL, dev.range = 1.5, ecologies.off = FALSE)
+nodal.local(blauObj, focal.niche = NULL, dev.range, ecologies.off = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,7 +19,7 @@ nodal.local(blauObj, focal.niche = NULL, dev.range = 1.5, ecologies.off = FALSE)
     Specifies a focial niche by name of the organization.
 }
   \item{dev.range}{
-    Defaults to 1.5. When creating niches, indicates standard deviation around the mean in each dimension to include in niche. A larger value will make niches larger and therefore include more individuals.
+    When creating niches, indicates standard deviation around the mean in each dimension to include in niche. A larger value will make niches larger and therefore include more individuals.
 }
   \item{ecologies.off}{
     Defaults to \code{FALSE}. If set to \code{TRUE}, treats all individuals as in the same ecology, even if ecology identifiers (\code{ecology.ids}) have been specified. Will call the niches function and overwrite its output even if it has been manually called by the user.
@@ -55,7 +55,8 @@ MemNotNiche: indicates whether an individual is a member of the focal membership
 data(TwoCities)
 b <- blau(TwoCities, node.ids = 'respID', ecology.ids = 'samp')
 #will automatically compute niches
-b0 <- nodal.local(b, focal.niche = 'grppta')
+b0 <- nodal.local(b, dev.range = rep(1.5, 10), focal.niche = 'grppta') 
+# 10 is the number of dimensions in the command line above 
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

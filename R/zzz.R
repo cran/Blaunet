@@ -1,6 +1,6 @@
 
 .onAttach <- function(libname, pkgname){
-  msg<-paste('BlauNet: Calculate and Analyze Blau Status for (covert) organizations\n')
+  msg<-paste('BlauNet: Calculate and Analyze Blau Status for (Covert) Organizations\n')
   msg<-paste(msg,"Copyright (c) 2014-2017, Cheng Wang, University of Notre Dame\n",
 "                         Michael Genkin, Singapore Management University\n",
 "                         George Berry, Cornell University\n",

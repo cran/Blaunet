@@ -11,12 +11,13 @@ An integrated set of tools to calculate and analyze Blau statuses quantifying so
 \tabular{ll}{
 Package: \tab Blaunet\cr
 Type: \tab Package\cr
-Version: \tab 2.0.5\cr
-Date: \tab 2017-09-14\cr
-Depends: \tab network (>= 1.7.1)\cr
+Version: \tab 2.0.6\cr
+Date: \tab 2017-09-22\cr
+Depends: \tab R (>= 3.0.0)\cr
+Imports: \tab gWidgets, gWidgetsRGtk2, RGtk2, cairoDevice, plot3D, plot3Drgl, rgl,\cr
+         \tab network, sna, ergm, statnet.common, haven,foreign\cr 
 License: \tab GPL-3\cr
 }
-
 \bold{1. Purpose of software}: The purpose of the software is to perform Blau status analysis, which is an analytic framework that allows one to describe how organizational competition affects micro-level processes. It relies on abstractly conceptualizing individuals as inhabiting a k-dimensional euclidean space formed by k variables.
 
 \bold{2. Defintions} 
@@ -44,7 +45,7 @@ License: \tab GPL-3\cr
 
 \bold{vi.)} Weights (optional): for data that was sampled from a population and where Blau  parameters need to be adjusted by weights.
 
-\bold{4. Note:} This is the first version of Blaunet. We've made every effort to make sure that that the program works correctly. However, we advise caution as we are unable to test on every type of dataset. If anything looks anomalous, please let us know at the maintenance email address below. 
+\bold{4. Note:} We've made every effort to make sure that that the program works correctly. However, we advise caution as we are unable to test on every type of dataset. If anything looks anomalous, please let us know at the maintenance email address below. 
 
 }
 \author{
@@ -56,7 +57,7 @@ George Berry, 'geb97@cornell.edu'
 
 Liyuan Chen,
 
-Matthew Brashears, 'brasheam@mailbox.sc.edu'
+Matthew E. Brashears, 'brasheam@mailbox.sc.edu'
 
 *Both authors contributed equally to this work and their names are randomly ordered
 

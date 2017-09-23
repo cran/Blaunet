@@ -118,17 +118,18 @@ showblaububble <- function(h,...) {
         assign("u3",svalue(h$obj),envir=.GlobalEnv)
       })
       j <- j + 1
+      gseparator(cont = secg)
     }
     tbl[j,1] <- "Please identify the categorical variable(s)"
     tbl[j,2] <- gcheckboxgroup(u4, handler = function(h,...){
       assign("u5",svalue(h$obj),envir=.GlobalEnv)
     })
-    j <- j + 1
-    tbl[j,1] <- "radius (0.33 by default)"
-    tbl[j,2] <- gslider(from = 0, to = 1, by = .01, value = 0.33, handler = function(h,...){
+    j <- j+1
+    gseparator(cont = secg)
+    glabel("radius (0.33 by default)",cont=secg)
+    gslider(from = 0, to = 1, by = .01, value = 0.33, ,cont=secg, handler = function(h,...){
       assign("u6",svalue(h$obj),envir=.GlobalEnv)
     })
-    j <- j + 1
     button <- gbutton("Continue", expand = FALSE, cont = secg, handler = function(h, ...) {
       dispose(seclevel)
       if (u3=="all") {

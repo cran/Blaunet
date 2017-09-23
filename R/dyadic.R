@@ -1,5 +1,5 @@
 dyadic <-
-function(blauObj, dev.range = 1.5, ecologies.off=FALSE, m.dist = TRUE) {
+function(blauObj, dev.range, ecologies.off=FALSE, m.dist = TRUE) {
 
   if (ecologies.off == TRUE){
     blauObj <- niches(blauObj, dev.range, ecologies.off)

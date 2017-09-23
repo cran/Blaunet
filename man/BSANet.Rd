@@ -24,7 +24,7 @@ List of 3\cr
   ..$ V2: Factor w/ 6 levels "Aude","Bruce",..: 3 5 3 4 6 1 6 2\cr
  $ adj        :'data.frame':	10 obs. of  10 variables:\cr
   ..$ John : int [1:10] 0 1 1 0 0 0 0 0 0 0\cr
-  ..$ Ebony: int [1:10] 1 0 1 0 0 0 0 0 0 0\cr
+  ..$ Emma: int [1:10] 1 0 1 0 0 0 0 0 0 0\cr
   ..$ Mary : int [1:10] 1 1 0 0 0 0 0 0 0 0\cr
   ..$ Amir : int [1:10] 0 0 0 0 1 0 0 0 0 0\cr
   ..$ Mark : int [1:10] 0 0 0 1 0 0 0 0 0 0\cr
@@ -35,7 +35,7 @@ List of 3\cr
   ..$ Bruce: int [1:10] 0 0 0 0 0 0 0 0 1 0\cr
 }
 \details{
-This dataset is a small dataset containing 10 individuals in two non-overlapping locations (as cities), created solely to illustrate the functions of the BlauNet package.  Affiliation variables contains membership in a liberal or conservative organization (or both).  Demographic data contains variables of age, education, and income.  Individual-level network data is also available in both adjacency matrix and edge list formats.
+This dataset is a small dataset containing 10 individuals in two non-overlapping locations (as cities), created solely to illustrate the functions of the Blaunet package.  Affiliation variables contains membership in a liberal or conservative organization (or both).  Demographic data contains variables of age, education, and income.  Individual-level network data is also available in both adjacency matrix and edge list formats.
 }
 \source{
 Data was created by the Blaunet team. All data is fictional and was created with a random number generator. 

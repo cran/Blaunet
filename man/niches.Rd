@@ -8,7 +8,7 @@ Locate individuals in organizational niches in Blau space
 Takes an object created with function blau and locates individuals in organizational niches. Automatically handles multiple ecologies by performing niche calculations separately for each ecology.
 }
 \usage{
-niches(blauObj, dev.range = 1.5, ecologies.off = FALSE)
+niches(blauObj, dev.range, ecologies.off = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -16,13 +16,13 @@ niches(blauObj, dev.range = 1.5, ecologies.off = FALSE)
     An object created with the function \code{blau}.
 }
   \item{dev.range}{
-    Defaults to 1.5. When creating niches, indicates standard deviation around the mean in each dimension to include in niche. A larger value will make niches larger and therefore include more individuals.
+    When creating niches, indicates standard deviation around the mean in each dimension to include in niche. A larger value will make niches larger and therefore include more individuals.
 }
   \item{ecologies.off}{
     Defaults to \code{FALSE}. If set to \code{TRUE}, treats all individuals as in the same ecology, even if ecology identifiers (\code{ecology.ids}) have been specified.}
 }
 \details{
-Creates niches for each organization within each ecology. Niches are hypercubes in euclidean space that define the area a member-seeking organization is likely to recruit members from. Consider a given organization: its members have various traits such as age, income, and work experience. We find the mean point in n-dimensional space for an organization. For each dimension, we extend \code{dev.range*SD} out from this mean in both positive and negative directions. Doing this for each dimension defines the niche for the given organization within the given ecology. The default \code{dev.range} is 1.5.
+Creates niches for each organization within each ecology. Niches are hypercubes in euclidean space that define the area a member-seeking organization is likely to recruit members from. Consider a given organization: its members have various traits such as age, income, and work experience. We find the mean point in n-dimensional space for an organization. For each dimension, we extend \code{dev.range*SD} out from this mean in both positive and negative directions. Doing this for each dimension defines the niche for the given organization within the given ecology.
 
 Once we define niche dimensions, we examine the demographic information for each individual and indicate whether the individual is inside the niche. This information is stored in the matrix \code{blauObject$isInNiche}.
 
@@ -52,11 +52,11 @@ Each ecology may have different niche boundaries for a given organization. This 
 data(TwoCities)
 b <- blau(TwoCities, node.ids = 'respID', ecology.ids = 'samp')
 #compute niches
-b0 <- niches(b)
+b0 <- niches(b, dev.range = rep(1.5, 10)) # 10 is the number of dimensions
 #change std. dev used for calculating niches
-b1 <- niches(b, dev.range = 1.0)
+b1 <- niches(b, dev.range = rep(1.0, 10)) # 10 is the number of dimensions
 #treat everyone as members of one ecology
-b2 <- niches(b, ecologies.off = TRUE)
+b2 <- niches(b, dev.range = rep(1.0, 10), ecologies.off = TRUE) # 10 is the number of dimensions
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

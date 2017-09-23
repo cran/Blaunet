@@ -8,14 +8,14 @@ Compute Blau statues for individuals across all niches
 Computes three measures---total number of organizations the individual occupies, total number of niches a person occupies, and a string indicating the niches an individual occupies. 
 }
 \usage{
-nodal.global(blauObj, dev.range = 1.5, ecologies.off = FALSE)
+nodal.global(blauObj, dev.range, ecologies.off = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{blauObj}{
     An object of class blau initialized with the function \code{blau}. Individuals will automatically be placed in niches with the function \code{niches} if this has not been done manually.}
   \item{dev.range}{
-    Defaults to 1.5. When creating niches, indicates standard deviation around the mean in each dimension to include in niche. A larger value will make niches larger and therefore include more individuals.
+    When creating niches, indicates standard deviation around the mean in each dimension to include in niche. A larger value will make niches larger and therefore include more individuals.
 
 }
   \item{ecologies.off}{
@@ -54,9 +54,10 @@ Niches: a string indicating which niches the individual belongs to and containin
 data(TwoCities)
 b <- blau(TwoCities, node.ids = 'respID', ecology.ids = 'samp')
 #will automatically call niches
-b0 <- nodal.global(b)
+b0 <- nodal.global(b, dev.range = rep(1.5, 10)) # 10 is the number of dimensions
 #treat all individuals as in same ecology
-b1 <- nodal.global(b, ecologies.off = TRUE)
+b1 <- nodal.global(b, dev.range = rep(1.5, 10), ecologies.off = TRUE) 
+# 10 is the number of dimensions in the command line above 
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

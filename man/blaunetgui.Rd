@@ -5,7 +5,7 @@
 Run Blau status analysis in graphic user interface (GUI).
 }
 \description{
-Load graphic user interface (GUI) for BlauNet package.
+Load graphic user interface (GUI) for Blaunet package.
 }
 \usage{
 blaunetgui()
@@ -39,7 +39,7 @@ blaunetgui has the following five main capabilities, it can:
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %%}
 \examples{
-##not running
+##Not Run
 ##blaunetgui()
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

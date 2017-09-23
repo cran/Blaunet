@@ -20,7 +20,7 @@ export.nodal(blauObj, niches = TRUE)
 }
 }
 \details{
-    This function is useful to manipulate the computed nodal Blau statuses and analyze them outside the blaunet program, either within R or by exporting them to another statistical package. 
+    This function is useful to manipulate the computed nodal Blau statuses and analyze them outside the Blaunet program, either within R or by exporting them to another statistical package. 
 }
 \value{
     Returns an object of class data.frame that includes all output from \code{niches}, \code{nodal.local}, \code{nodal.global}, or \code{nodal.network} previously computed by the user. The user must manually call one or more of these four functions prior to calling \code{export.nodal}. Columns are labeled with the name of the measure. Row names are node names provided with the blau function.
@@ -45,8 +45,9 @@ export.nodal(blauObj, niches = TRUE)
 data(TwoCities)
 b <- blau(TwoCities, node.ids = 'respID', ecology.ids = 'samp')
 #blau object will store whatever you compute
-b <- nodal.global(b)
-b <- nodal.local(b, focal.niche = 'grppta')
+b <- nodal.global(b, dev.range = rep(1.5, 10)) # 10 is the number of dimensions
+b <- nodal.local(b, dev.range = rep(1.5, 10), focal.niche = 'grppta')
+# 10 is the number of dimensions in the command line above 
 export.nodal(b) #will export global and local
 export.nodal(b, niches = FALSE) #suppress niche export
 

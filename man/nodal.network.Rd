@@ -8,14 +8,14 @@
     Computes whether an individual spans (has connections in) another niche and the number of other niches each individual spans to.
 }
 \usage{
-nodal.network(blauObj, dev.range = 1.5, ecologies.off = FALSE)
+nodal.network(blauObj, dev.range, ecologies.off = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{blauObj}{
     An object of class blau initialized with the function \code{blau}. Individuals will automatically be placed in niches with the function \code{niches} if this has not been done manually.}
   \item{dev.range}{
-    Defaults to 1.5. When creating niches, indicates standard deviation around the mean in each dimension to include in niche. A larger value will make niches larger and therefore include more individuals.}
+    When creating niches, indicates standard deviation around the mean in each dimension to include in niche. A larger value will make niches larger and therefore include more individuals.}
   \item{ecologies.off}{
     Defaults to \code{FALSE}. If set to \code{TRUE}, treats all individuals as in the same ecology, even if ecology identifiers (\code{ecology.ids}) have been specified. Will call the \code{niches} function and overwrite its output even if it has been manually called by the user.}
 }
@@ -49,7 +49,7 @@ el <- BSANet$el
 square.data <- BSANet$square.data
 b <- blau(square.data, node.ids = 'person', ecology.ids = 'city', graph = el)
 #will automatically compute niches
-b <- nodal.network(b)
+b <- nodal.network(b, dev.range = rep(1.5, 3)) # 3 is the number of dimensions
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

@@ -17,7 +17,7 @@ export.dyadic(blauObj)
 }
 }
 \details{
-This function is useful to manipulate the computed dyadic Blau statuses and analyze them outside the blaunet program, either within R or by exporting them to another statistical package. 
+This function is useful to manipulate the computed dyadic Blau statuses and analyze them outside the Blaunet program, either within R or by exporting them to another statistical package. 
 }
 \value{
     Returns an object of class data.frame that includes all output from function dyadic. The user must manually call the \code{dyadic} function prior to calling \code{export.dyadic}.
@@ -42,7 +42,7 @@ data(BSANet)
 square.data <- BSANet$square.data
 el <- BSANet$el
 b <- blau(square.data, node.ids = 'person', ecology.ids = 'city', graph = el)
-b <- dyadic(b)
+b <- dyadic(b, dev.range = rep(1.5, 3)) # 3 is the number of dimensions
 export.dyadic(b)
 
 }
