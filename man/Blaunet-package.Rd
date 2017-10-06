@@ -11,8 +11,8 @@ An integrated set of tools to calculate and analyze Blau statuses quantifying so
 \tabular{ll}{
 Package: \tab Blaunet\cr
 Type: \tab Package\cr
-Version: \tab 2.0.6\cr
-Date: \tab 2017-09-22\cr
+Version: \tab 2.0.7\cr
+Date: \tab 2017-10-06\cr
 Depends: \tab R (>= 3.0.0)\cr
 Imports: \tab gWidgets, gWidgetsRGtk2, RGtk2, cairoDevice, plot3D, plot3Drgl, rgl,\cr
          \tab network, sna, ergm, statnet.common, haven,foreign\cr 
