@@ -62,7 +62,7 @@ loadnet <- function(h,...) {
     rownames(adj) <- colnames(adj) <- attr(as.matrix(net,matrix.type='edgelist'),"vnames")
     assign("adj",adj,envir=.GlobalEnv)
     assign("el",el,envir=.GlobalEnv)
-    gmessage(paste("Congratulations! Your attribute file ",f," is now loaded",sep=''), parent = window)
+    gmessage(paste("Congratulations! Your network file ",f," is now loaded",sep=''), parent = window)
   } else gmessage("Sorry! Unknown file format.", parent = window)
 }
 

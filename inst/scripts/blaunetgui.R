@@ -1,13 +1,14 @@
 
 rm(list=ls())
+if (("network" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/network_1.13.0.1.tar.gz", repos = NULL, type = "source")
 if (Sys.info()[1]=="Windows") {
   packages <- c("RGtk2", "cairoDevice", "gWidgets", "gWidgetsRGtk2", "plot3D", "plot3Drgl", 
               "network", "sna", "haven", "foreign", "ergm")
 } else {
-  if (("RGtk2" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/RGtk2_2.20.33.tar.gz", repos = NULL, type = "source")
-  if (("cairoDevice" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/cairoDevice_2.24.tar.gz", repos = NULL, type = "source")
+  if (("RGtk2" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/RGtk2_2.20.35.tar.gz", repos = NULL, type = "source")
+  if (("cairoDevice" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/cairoDevice_2.25.tar.gz", repos = NULL, type = "source")
   if (("gWidgets" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/gWidgets_0.0-54.tar.gz", repos = NULL, type = "source")
-  if (("gWidgetsRGtk2" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/gWidgetsRGtk2_0.0-84.tar.gz", repos = NULL, type = "source")
+  if (("gWidgetsRGtk2" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/gWidgetsRGtk2_0.0-86.tar.gz", repos = NULL, type = "source")
   packages <- c("plot3D", "plot3Drgl", "network", "sna", "haven", "ergm")
 }
 if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
@@ -40,7 +41,7 @@ source('nicheplot.R')
 source('analysis.R')
 source('dynamics.R')
 source('blaububbles.R')
-showabout <- function(h,...) gmessage("Blaunet graphic package 2.0.7", parent = window)
+showabout <- function(h,...) gmessage("Blaunet graphic package 2.0.8", parent = window)
 commandpdf <- function(h,...) {
   if (Sys.info()[1]=="Windows") shell.exec(paste(.libPaths(), "/Blaunet/scripts/command.pdf", sep="")) 
   else if (Sys.info()[1]=="Darwin") system(paste("open ",.libPaths(), "/Blaunet/scripts/command.pdf", sep=""))
@@ -137,17 +138,19 @@ menu_bar <- gmenu(menu_bar_list, cont = window)
 tool_bar <- gtoolbar(tool_bar_list, cont = window)
 no_changes <- c("save","save.as","cut")
 if (Sys.info()[1]=="Windows") {
+  setwd(gsub("scripts", "data", getwd()))
   txt <- gedit(getwd(), cont = group)
   button <- gbutton("Set Working Directory", cont = group, handler = function(h, ...) setwd(choose.dir()))
   addHandlerChanged(button, handler=function(h,...) svalue(txt) <- getwd())
 } else {
+  setwd(gsub("scripts", "data", getwd()))
   txt <- gedit(getwd(), cont = group)
   button <- gbutton("Set working directory", cont = group, handler = function(h, ...) setwd(svalue(txt)))
 }
 glabel("Title: A Toolkit for Calculating, Visualizing, and Analyzing Social Distance Using Blau Status Analysis ", container=group, anchor=c(-1,1))
 glabel("Depends: R (>= 3.0.0)", container=group, anchor=c(-1,1))
 glabel("Imports: gWidgets, gWidgetsRGtk2, RGtk2, cairoDevice, plot3D, plot3Drgl, rgl, network, sna, ergm, statnet.common, haven, foreign", container=group, anchor=c(-1,1))
-glabel("Version: 2.0.7", container=group, anchor=c(-1,1))
+glabel("Version: 2.0.8", container=group, anchor=c(-1,1))
 glabel("Authors: Cheng Wang*, Michael Genkin*, George Berry, Liyuan Chen, Matthew Brashears *Both authors contributed equally to this work and their names are randomly ordered", container=group, anchor=c(-1,1))
 glabel("Maintainer: Cheng Wang <cwang3@nd.edu>", container=group, anchor=c(-1,1))
 glabel("Description: An integrated set of tools to calculate, visualize, and analyze positions in social distance between individuals belonging to (covert) organizational groups. 
@@ -156,7 +159,7 @@ glabel("License: GPL-3", container=group, anchor=c(-1,1))
 glabel("Blaunet Users Facebook group: https://www.facebook.com/groups/425015561030239/", container=group, anchor=c(-1,1))
 glabel("Funding: This project is supported by Defense Threat Reduction Agency (DTRA) Grant HDTRA-10-1-0043.", container=group, anchor=c(-1,1))
 glabel("Repository: CRAN", container=group, anchor=c(-1,1))
-glabel("Date/Publication: 2017-10-06 16:14:43", container=group, anchor=c(-1,1))
+glabel("Date/Publication: 2018-09-13 11:14:43", container=group, anchor=c(-1,1))
 
 sb <- gstatusbar("", container=window)
 #id <- addHandlerUnrealize(window, handler = function(h,...) {!gconfirm("Really close", parent = h$obj)})

@@ -11,8 +11,8 @@ An integrated set of tools to calculate and analyze Blau statuses quantifying so
 \tabular{ll}{
 Package: \tab Blaunet\cr
 Type: \tab Package\cr
-Version: \tab 2.0.7\cr
-Date: \tab 2017-10-06\cr
+Version: \tab 2.0.8\cr
+Date: \tab 2018-09-13\cr
 Depends: \tab R (>= 3.0.0)\cr
 Imports: \tab gWidgets, gWidgetsRGtk2, RGtk2, cairoDevice, plot3D, plot3Drgl, rgl,\cr
          \tab network, sna, ergm, statnet.common, haven,foreign\cr 
@@ -68,9 +68,9 @@ Brashears, E. Matthew, Michael Genkin, and Chan S. Suh. ``In the Organization's 
 
 Genkin, Michael, Matthew E. Brashears, and Chan S. Suh ``Why Social Networks Differ: The Role of Organizational Competition''
 
-McPherson, J. Miller. (1983). ``Ecology of Affiliatio''. American Sociological Review, 48(4), 519-532. 
+McPherson, J. Miller. (1983). ``Ecology of Affiliation''. American Sociological Review, 48(4), 519-532. 
 
-McPherson, J. Miller. (2004). ``A Blau space primer: prolegomenon to an ecology of affiliation''. Industrial and Corporate Change, 13(1), 263-280.
+McPherson, J. Miller. (2004). ``A Blau Space Primer: Prolegomenon to an Ecology of Affiliation''. Industrial and Corporate Change, 13(1), 263-280.
 }
 \keyword{ package }
 %%\seealso{
