@@ -11,8 +11,8 @@ An integrated set of tools to calculate and analyze Blau statuses quantifying so
 \tabular{ll}{
 Package: \tab Blaunet\cr
 Type: \tab Package\cr
-Version: \tab 2.0.8\cr
-Date: \tab 2018-09-13\cr
+Version: \tab 2.0.9\cr
+Date: \tab 2020-05-10\cr
 Depends: \tab R (>= 3.0.0)\cr
 Imports: \tab gWidgets, gWidgetsRGtk2, RGtk2, cairoDevice, plot3D, plot3Drgl, rgl,\cr
          \tab network, sna, ergm, statnet.common, haven,foreign\cr 
@@ -49,7 +49,7 @@ License: \tab GPL-3\cr
 
 }
 \author{
-Cheng Wang*, 'cwang3@nd.edu'
+Cheng Wang*, 'chengwang@wayne.edu'
 
 Michael Genkin*, 'mgenkin@smu.edu.sg'
 
@@ -61,16 +61,14 @@ Matthew E. Brashears, 'brasheam@mailbox.sc.edu'
 
 *Both authors contributed equally to this work and their names are randomly ordered
 
-Maintainer: Cheng Wang <'cwang3@nd.edu'>
+Maintainer: Cheng Wang <'chengwang@wayne.edu'>
 }
 \references{
-Brashears, E. Matthew, Michael Genkin, and Chan S. Suh. ``In the Organization's Shadow: How Individual Behavior is Shaped by Organizational Leakage''
-
-Genkin, Michael, Matthew E. Brashears, and Chan S. Suh ``Why Social Networks Differ: The Role of Organizational Competition''
-
 McPherson, J. Miller. (1983). ``Ecology of Affiliation''. American Sociological Review, 48(4), 519-532. 
 
 McPherson, J. Miller. (2004). ``A Blau Space Primer: Prolegomenon to an Ecology of Affiliation''. Industrial and Corporate Change, 13(1), 263-280.
+
+Genkin, Michael, Cheng Wang, George Berry, and Matthew E. Brashears. (2018). ``Blaunet: An R-based Graphical User Interface Package to Analyze Blau Space''. PLoS ONE, 13(10), e0204990.
 }
 \keyword{ package }
 %%\seealso{

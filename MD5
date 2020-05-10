@@ -1,4 +1,4 @@
-79dc425d7e034537cd50bdc38254ff6a *DESCRIPTION
+474c06d95369e6e2e8c25db95677752d *DESCRIPTION
 f17990d2da50d12a78b8d100875f486c *NAMESPACE
 511ffc67b4d63ed92db7fe7662ee31ef *R/active.R
 50d9ca22e40a5f73619d43b6bbd31eb1 *R/blau.R
@@ -25,7 +25,7 @@ d499382af341ec5899f6e76ff9cf5a9d *R/nodal.global.R
 2dfb5069f16b669535b0aba494d5adc7 *R/nodal.local.R
 d78e42ee8e0b0718249a92b6606fb32c *R/nodal.network.R
 16610bdffe07d62ec370390923ae01a8 *R/splittify.R
-246bba71ecae4f17ccffc989a089f88c *R/zzz.R
+7f63f70551f21d30c9ec48ca4bb9789f *R/zzz.R
 1acc80e9cfeb06ef9d52bdf3ee74e19c *data/BSANet.rda
 0e0d6e36b6e161810ebbf4eafcb4e294 *data/TwoCities.rda
 b41462e2533e7ca08dc6e71c50e2b835 *data/gss74_87.rda
@@ -33,18 +33,18 @@ b41462e2533e7ca08dc6e71c50e2b835 *data/gss74_87.rda
 e21dee9b52a094a68f02923b771ec06f *data/schlnet.rda
 cdf1d102e48a93b83b3be630016a0485 *inst/scripts/analysis.R
 3085a19c9b370c255b15271fab777313 *inst/scripts/blaububbles.R
-516ad982cbb09465879aef7c9e83cf8f *inst/scripts/blaunetgui.R
+fdc8c05f09517ac8c22c22c77a913fed *inst/scripts/blaunetgui.R
 3ba2e58cc5599dcfc49c1bf842027245 *inst/scripts/browse.R
-8355e48cea1854bff85eaa6a3821791e *inst/scripts/command.pdf
+dfe07f5012b99534635a5c5bf5c78bc5 *inst/scripts/command.pdf
 a0d002fcbd3229f3dc7a524b09feb2b3 *inst/scripts/dimensions.R
 f1cf1771ad23fa45454ad64c43914fed *inst/scripts/dynamics.R
 b73fe50047805fe7b730be41ebcd10ee *inst/scripts/graph.R
-1734b08a37d82e75f021b7179d3d267a *inst/scripts/graphic.pdf
+4753eda416922eca4af273cf171cc694 *inst/scripts/graphic.pdf
 800f5127a9d3a86a6ab99d356162e96d *inst/scripts/network.R
 5a9c00c24b07266da9a416361c57c606 *inst/scripts/nicheplot.R
 47f5c4d2782842de15af6db156449175 *inst/scripts/open.R
 65f43eb893d0b9d6d8cb66f1d98f6dd1 *man/BSANet.Rd
-1c35fd55fb912ae7bb19b9da2f52c44f *man/Blaunet-package.Rd
+cf5e2b5caf4729949cf54fc6845644b2 *man/Blaunet-package.Rd
 31fcd6c25e8414ed7e3e6ce2ab2f344d *man/TwoCities.Rd
 2ac31881e32f569c1715321116d0ea78 *man/active.Rd
 c8e639411237e4deb7e3ec3bfcfa661f *man/blau.Rd
