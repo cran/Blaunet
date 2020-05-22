@@ -11,8 +11,8 @@ An integrated set of tools to calculate and analyze Blau statuses quantifying so
 \tabular{ll}{
 Package: \tab Blaunet\cr
 Type: \tab Package\cr
-Version: \tab 2.0.9\cr
-Date: \tab 2020-05-10\cr
+Version: \tab 2.1.0\cr
+Date: \tab 2020-05-21\cr
 Depends: \tab R (>= 3.0.0)\cr
 Imports: \tab gWidgets, gWidgetsRGtk2, RGtk2, cairoDevice, plot3D, plot3Drgl, rgl,\cr
          \tab network, sna, ergm, statnet.common, haven,foreign\cr 
@@ -64,11 +64,11 @@ Matthew E. Brashears, 'brasheam@mailbox.sc.edu'
 Maintainer: Cheng Wang <'chengwang@wayne.edu'>
 }
 \references{
-McPherson, J. Miller. (1983). ``Ecology of Affiliation''. American Sociological Review, 48(4), 519-532. 
+McPherson, J. Miller. (1983). ``An Ecology of Affiliation''. American Sociological Review, 48(4), 519-532. DOI: 10.2307/2117719
 
-McPherson, J. Miller. (2004). ``A Blau Space Primer: Prolegomenon to an Ecology of Affiliation''. Industrial and Corporate Change, 13(1), 263-280.
+McPherson, J. Miller. (2004). ``A Blau Space Primer: Prolegomenon to an Ecology of Affiliation''. Industrial and Corporate Change, 13(1), 263-280. DOI: 10.1093/icc/13.1.263
 
-Genkin, Michael, Cheng Wang, George Berry, and Matthew E. Brashears. (2018). ``Blaunet: An R-based Graphical User Interface Package to Analyze Blau Space''. PLoS ONE, 13(10), e0204990.
+Genkin, Michael, Cheng Wang, George Berry, and Matthew E. Brashears. (2018). ``Blaunet: An R-based Graphical User Interface Package to Analyze Blau Space''. PLoS ONE, 13(10), e0204990. DOI: 10.1371/journal.pone.0204990
 }
 \keyword{ package }
 %%\seealso{
