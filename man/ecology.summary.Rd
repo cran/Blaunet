@@ -1,6 +1,5 @@
 \name{ecology.summary}
 \alias{ecology.summary}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Summarizes the distribution of individuals across niches.
 }
@@ -10,7 +9,6 @@ Outputs a niche-by-niche matrix for each ecology where each cell, [A,B], corresp
 \usage{
 ecology.summary(blauObj, percent = FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{blauObj}{
     An object of class blau initialized with the function \code{blau}. The function niches must have been called previously by the user. 
@@ -24,31 +22,10 @@ The purpose of this function is to give the analyst a sense of the structure of 
 }
 \value{
 Returns an object of class \code{data.frame} that contains a niche-by-niche matrix for each ecology. Ecology and niche identifiers are presented in the first two columns, followed by the niche-by-niche matrix. Matrices are stacked vertically.
-
 }
-%%\references{
-%% ~put references to the literature/web site here ~
-%%}
-%%\author{
-%%  ~~who you are~~
-%%}
-%%\note{
-%%  ~~further notes~~
-%%}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-%%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%%}
 \examples{
 data(TwoCities)
 b <- blau(TwoCities, node.ids = 'respID', ecology.ids = 'samp')
 b <- niches(b, dev.range = rep(1.5, 10)) # 10 is the number of dimensions
 ecology.summary <- ecology.summary(b)
-
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-%%\keyword{ ~kwd1 }
-%%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

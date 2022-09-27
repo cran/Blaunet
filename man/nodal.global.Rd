@@ -1,6 +1,5 @@
 \name{nodal.global}
 \alias{nodal.global}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Compute Blau statues for individuals across all niches
 }
@@ -10,13 +9,11 @@ Computes three measures---total number of organizations the individual occupies,
 \usage{
 nodal.global(blauObj, dev.range, ecologies.off = FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{blauObj}{
     An object of class blau initialized with the function \code{blau}. Individuals will automatically be placed in niches with the function \code{niches} if this has not been done manually.}
   \item{dev.range}{
     When creating niches, indicates standard deviation around the mean in each dimension to include in niche. A larger value will make niches larger and therefore include more individuals.
-
 }
   \item{ecologies.off}{
     Defaults to \code{FALSE}. If set to \code{TRUE}, treats all individuals as in the same ecology, even if ecology identifiers (\code{ecology.ids}) have been specified. Will call the \code{niches} function and overwrite its output even if it has been manually called by the user.
@@ -33,23 +30,8 @@ Niches: a string indicating which niches the individual belongs to and containin
 
 }
 \value{
-    A matrix object stored in object$nodalGlobal that contains the three measures in three columns. Row names are node names provided with the blau function.
+A matrix object stored in object$nodalGlobal that contains the three measures in three columns. Row names are node names provided with the blau function.
 }
-%%\references{
-%% ~put references to the literature/web site here ~
-%%}
-%%\author{
-%%  ~~who you are~~
-%%}
-%%\note{
-%%  ~~further notes~~
-%%}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-%%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%%}
 \examples{
 data(TwoCities)
 b <- blau(TwoCities, node.ids = 'respID', ecology.ids = 'samp')
@@ -58,9 +40,4 @@ b0 <- nodal.global(b, dev.range = rep(1.5, 10)) # 10 is the number of dimensions
 #treat all individuals as in same ecology
 b1 <- nodal.global(b, dev.range = rep(1.5, 10), ecologies.off = TRUE) 
 # 10 is the number of dimensions in the command line above 
-
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-%%\keyword{ ~kwd1 }
-%%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

@@ -1,6 +1,5 @@
 \name{niches}
 \alias{niches}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Locate individuals in organizational niches in Blau space
 }
@@ -10,7 +9,6 @@ Takes an object created with function blau and locates individuals in organizati
 \usage{
 niches(blauObj, dev.range, ecologies.off = FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{blauObj}{
     An object created with the function \code{blau}.
@@ -27,27 +25,10 @@ Creates niches for each organization within each ecology. Niches are hypercubes 
 Once we define niche dimensions, we examine the demographic information for each individual and indicate whether the individual is inside the niche. This information is stored in the matrix \code{blauObject$isInNiche}.
 
 Each ecology may have different niche boundaries for a given organization. This heterogeneity is important for examining how different organizations recruit in different ecologies (e.g. cities, schools, etc.).
-
 }
 \value{
 \item{obj}{Adds \code{topbounds}, \code{lowbounds}, and \code{isInNiche} to the Blau object.}
 }
-%%}
-%%\references{
-%% ~put references to the literature/web site here ~
-%%}
-%%\author{
-%%  ~~who you are~~
-%%}
-%%\note{
-%%  ~~further notes~~
-%%}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-%%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%%}
 \examples{
 data(TwoCities)
 b <- blau(TwoCities, node.ids = 'respID', ecology.ids = 'samp')
@@ -57,9 +38,4 @@ b0 <- niches(b, dev.range = rep(1.5, 10)) # 10 is the number of dimensions
 b1 <- niches(b, dev.range = rep(1.0, 10)) # 10 is the number of dimensions
 #treat everyone as members of one ecology
 b2 <- niches(b, dev.range = rep(1.0, 10), ecologies.off = TRUE) # 10 is the number of dimensions
-
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-%%\keyword{ ~kwd1 }
-%%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

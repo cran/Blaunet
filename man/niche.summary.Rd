@@ -1,6 +1,5 @@
 \name{niche.summary}
 \alias{niche.summary}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
     Summarizes information on each membership organization
 }
@@ -10,7 +9,6 @@
 \usage{
 niche.summary(blauObj)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{blauObj}{
     An object of class blau initialized with the function \code{blau}. The function \code{niches} must have been called previously by the user. 
@@ -35,31 +33,10 @@ MemExc: computes how many people are in the organization but not in the organiza
 }
 \value{
 Returns an object of class \code{data.frame} that contains the five summary measures as columns, along with two columns identifying the ecology and the niche corresponding to the information provided. 
-
 }
-%%\references{
-%% ~put references to the literature/web site here ~
-%%}
-%%%\author{
-%%  ~~who you are~~
-%%}
-%%\note{
-%%  ~~further notes~~
-%%}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-%%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%%}
 \examples{
 data(TwoCities)
 b <- blau(TwoCities, node.ids = 'respID', ecology.ids = 'samp')
 b <- niches(b, dev.range = rep(1.5, 10)) # 10 is the number of dimensions
 niche.summary <- niche.summary(b)
-
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-%%\keyword{ ~kwd1 }
-%%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

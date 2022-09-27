@@ -1,7 +1,7 @@
 
 showinfo <- function(h,...) {
-  if ("adj" %in% ls(envir=.GlobalEnv)) {
-    out <- capture.output(summary(network(adj)))[1:19]
+  if ("adj" %in% ls(envir=blnetevn)) {
+    out <- capture.output(summary(network(as.matrix(blnetevn$adj))))[1:19]
     window <- gwindow("Network Information", visible = FALSE)
     exp_group <- gexpandgroup("Summary", cont = window)
     label <- glabel(out, cont = exp_group)
@@ -9,20 +9,20 @@ showinfo <- function(h,...) {
     visible(window) <- TRUE} else gmessage("Sorry! Network file is not loaded.", parent = window)
 }
 showdensity <- function(h,...) {
-  if ("adj" %in% ls(envir=.GlobalEnv)) {
-    gmessage(paste("The network density is ",network.density(network(adj)),".",sep=""), parent = window)
+  if ("adj" %in% ls(envir=blnetevn)) {
+    gmessage(paste("The network density is ",network.density(network(as.matrix(blnetevn$adj))),".",sep=""), parent = window)
   } else gmessage("Sorry! Network file is not loaded.", parent = window)
 }
 showcentrality <- function(h,...) {
-  if ("adj" %in% ls(envir=.GlobalEnv)) {
-    n <- network(adj)
+  if ("adj" %in% ls(envir=blnetevn)) {
+    n <- network(as.matrix(blnetevn$adj))
     outd <- degree(n,cmode="outdegree")
     ind <- degree(n,cmode="indegree")
     bet <- betweenness(n)
     clo <- closeness(n)
     eig <- round(evcent(n),4)
     output <- data.frame(cbind(network.vertex.names(n),outd,ind,bet,clo,eig))
-    names(output) <- c("id","outdegree","indegree","betweenness","closeness","eigenvector")
+    names(output) <- c("nodeId","outdegree","indegree","betweenness","closeness","eigenvector")
     nw <- gwindow("Centrality", width = 600, height = 400)
     group <- ggroup(horizontal = FALSE, cont = nw)
     button1 <- gbutton("Save as csv file: centrality.csv", expand = FALSE, cont = group, handler = function(h, ...) {
@@ -41,43 +41,43 @@ showcentrality <- function(h,...) {
       write.foreign(output, "centrality.txt", "centrality.sps",   package="SPSS")
     })
     gseparator(cont = group)
-    vars <- gtable(output, expand = TRUE, cont = group)
+    vars <- gdf(output, expand = TRUE,  fill=TRUE,  cont = group)
   } else gmessage("Sorry! Network file is not loaded.", parent = window)
 }
 showdcensus <- function(h,...) {
-  if ("adj" %in% ls(envir=.GlobalEnv)) {
-    out <- data.frame(dyad.census(network(adj)))
+  if ("adj" %in% ls(envir=blnetevn)) {
+    out <- data.frame(dyad.census(network(as.matrix(blnetevn$adj))))
     names(out) <- c("Mutual","Asymmetric","Null")
     window <- gwindow("Dyad Census", width = 300, height = 100)
-    vars <- gtable(out, cont = window)
+    vars <- gdf(out, expand = TRUE,  fill=TRUE, cont = window)
   } else gmessage("Sorry! Network file is not loaded.", parent = window)
 }
 showreciprocityindex <- function(h,...) {
-  if ("adj" %in% ls(envir=.GlobalEnv)) {
-    n <- (network(adj))
+  if ("adj" %in% ls(envir=blnetevn)) {
+    n <- (network(as.matrix(blnetevn$adj)))
     ri <- (dyad.census(n)[1]*2)/(dyad.census(n)[1]*2+dyad.census(n)[2]) 
     gmessage(paste("The reciprocity index is ",ri,".",sep=""), parent = window)
   } else gmessage("Sorry! Network file is not loaded.", parent = window)
 }
 showtcensus <- function(h,...) {
-  if ("adj" %in% ls(envir=.GlobalEnv)) {
-    out <- data.frame(triad.census(network(adj)))
+  if ("adj" %in% ls(envir=blnetevn)) {
+    out <- data.frame(triad.census(network(as.matrix(blnetevn$adj))))
     names(out) <- gsub("X","",names(out))
     window <- gwindow("Triad Census", width = 800, height = 100)
-    vars <- gtable(out, cont = window)
+    vars <- gdf(out, expand = TRUE,  fill=TRUE, cont = window)
   } else gmessage("Sorry! Network file is not loaded.", parent = window)
 }
 showglobalcustering <- function(h,...) {
-  if ("adj" %in% ls(envir=.GlobalEnv)) {
-    t<-triad.census(network(adj))
+  if ("adj" %in% ls(envir=blnetevn)) {
+    t<-triad.census(network(as.matrix(blnetevn$adj)))
     num <- 3*(t[9]+t[10]+t[12]+t[13]+t[14]+t[15]+t[16])
     dem <- num+t[4]+t[5]+t[6]+t[7]+t[8]+t[11]
     gmessage(paste("The global clustering coefficient is ",num/dem,".",sep=""), parent = window)
   } else gmessage("Sorry! Network file is not loaded.", parent = window)
 }
 showlocalcustering <- function(h,...) {
-  if ("adj" %in% ls(envir=.GlobalEnv)) {
-    m1 <- as.matrix(network(adj),matrix.type='edgelist')
+  if ("adj" %in% ls(envir=blnetevn)) {
+    m1 <- as.matrix(network(as.matrix(blnetevn$adj)),matrix.type='edgelist')
     m2 <- rbind(m1,cbind(m1[,2],m1[,1]))
     m2 <- m2[!duplicated(m2), ]
     m9 <- matrix(rep(0,2*attr(m1,"n")),ncol=2)
@@ -112,7 +112,7 @@ showlocalcustering <- function(h,...) {
       write.foreign(m9, "localclustering.txt", "localclustering.sps",   package="SPSS")
     })
     gseparator(cont = group)
-    vars <- gtable(m9, expand = TRUE, cont = group)
+    vars <- gdf(m9, expand = TRUE,  fill=TRUE, cont = group)
   } else gmessage("Sorry! Network file is not loaded.", parent = window)
 }
 

@@ -40,8 +40,9 @@ This dataset is a small dataset containing 10 individuals in two non-overlapping
 \source{
 Data was created by the Blaunet team. All data is fictional and was created with a random number generator. 
 }
-%%\references{
-%%}
+\value{
+Returns a list containing the BSANet attribute and network files.
+}
 \examples{
 data(BSANet)
 }

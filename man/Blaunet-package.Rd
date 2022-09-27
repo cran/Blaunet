@@ -2,20 +2,20 @@
 \alias{blaunet}
 \docType{package}
 \title{
-Calculate and Analyze Blau statuses for measuring social distance
+Calculate and Analyze Blau statuses for Measuring Social Distance
 }
 \description{
-An integrated set of tools to calculate and analyze Blau statuses quantifying social distance between individuals belonging to organizations. Blaunet works by considering individuals placed in an abstract social space, defined by various user-provided variables. Organizations recruit from an area (or ``niche'') in social space. Blaunet analyzes where organizations recruit from, the positions users occupy in this competitive environment, and substantial features of the connections between individuals.
+Blaunet package calculates and analyzes Blau statuses for quantifying social distance between individuals belonging to organizations. Blaunet works by considering individuals placed in an abstract social space, defined by various user-provided variables. Organizations recruit from an area (or ``niche'') in social space. Blaunet analyzes where organizations recruit from, the positions users occupy in this competitive environment, and substantial features of the connections between individuals.
 }
 \details{
 \tabular{ll}{
 Package: \tab Blaunet\cr
 Type: \tab Package\cr
-Version: \tab 2.1.0\cr
-Date: \tab 2020-05-21\cr
+Version: \tab 2.2.1\cr
+Date: \tab 2022-09-26\cr
 Depends: \tab R (>= 3.0.0)\cr
-Imports: \tab gWidgets, gWidgetsRGtk2, RGtk2, cairoDevice, plot3D, plot3Drgl, rgl,\cr
-         \tab network, sna, ergm, statnet.common, haven,foreign\cr 
+Imports: \tab digest, gWidgets2, gWidgets2tcltk, plot3D, plot3Drgl, rgl,\cr
+         \tab network, sna, ergm, statnet.common, haven, foreign\cr 
 License: \tab GPL-3\cr
 }
 \bold{1. Purpose of software}: The purpose of the software is to perform Blau status analysis, which is an analytic framework that allows one to describe how organizational competition affects micro-level processes. It relies on abstractly conceptualizing individuals as inhabiting a k-dimensional euclidean space formed by k variables.
@@ -70,11 +70,5 @@ McPherson, J. Miller. (2004). ``A Blau Space Primer: Prolegomenon to an Ecology 
 
 Genkin, Michael, Cheng Wang, George Berry, and Matthew E. Brashears. (2018). ``Blaunet: An R-based Graphical User Interface Package to Analyze Blau Space''. PLoS ONE, 13(10), e0204990. DOI: 10.1371/journal.pone.0204990
 }
+\value{No return value} 
 \keyword{ package }
-%%\seealso{
-%%~~ Optional links to other man pages, e.g. ~~
-%%~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-%%}
-%%\examples{
-%%~~ simple examples of the most important functions ~~
-%%}

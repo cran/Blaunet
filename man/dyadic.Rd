@@ -1,6 +1,5 @@
 \name{dyadic}
 \alias{dyadic}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
     Computes dyadic Blau status measures.
 }
@@ -10,7 +9,6 @@
 \usage{
 dyadic(blauObj, dev.range, ecologies.off = FALSE, m.dist = TRUE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{blauObj}{
     An object of class blau initialized with the function \code{blau}. Individuals will automatically be placed in niches with the function \code{niches} if this has not been done manually.
@@ -40,25 +38,8 @@ Straddlers: is an indicator variable that denotes ties where one node belongs to
 Spanners: is an indicator variable that denotes ties where one node belongs to one niche and the other node belongs to a different niche.
 }
 \value{
-    Returns a matrix stored in object$dyadic that contains eight columns. The first two contain the ego and alter for the edge, and the next six contain the dyadic measures.
-
+Returns a matrix stored in object$dyadic that contains eight columns. The first two contain the ego and alter for the edge, and the next six contain the dyadic measures.
 }
-%%}
-%%\references{
-%% ~put references to the literature/web site here ~
-%%}
-%%\author{
-%%  ~~who you are~~
-%%}
-%%\note{
-%%  ~~further notes~~
-%%}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-%%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%%}
 \examples{
 data(BSANet)
 square.data <- BSANet$square.data
@@ -74,9 +55,4 @@ b <- dyadic(b, dev.range = rep(1.5, 3)) # 3 is the number of dimensions
 b <- blau(square.data, node.ids = 'person', ecology.ids = 'city', graph = adj)
 #will automatically compute niches
 b <- dyadic(b, dev.range = rep(1.5, 3)) # 3 is the number of dimensions
-
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-%%\keyword{ ~kwd1 }
-%%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

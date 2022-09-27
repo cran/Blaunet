@@ -1,24 +1,10 @@
 
 rm(list=ls())
-if (("network" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/network_1.16.0.tar.gz", repos = NULL, type = "source")
-if (Sys.info()[1]=="Windows") {
-  packages <- c("RGtk2", "cairoDevice", "gWidgets", "gWidgetsRGtk2", "plot3D", "plot3Drgl", 
-              "network", "sna", "haven", "foreign", "ergm")
-} else {
-  if (("RGtk2" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/RGtk2_2.20.36.tar.gz", repos = NULL, type = "source")
-  if (("cairoDevice" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/cairoDevice_2.28.tar.gz", repos = NULL, type = "source")
-  if (("gWidgets" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/gWidgets_0.0-54.2.tar.gz", repos = NULL, type = "source")
-  if (("gWidgetsRGtk2" %in% installed.packages())==FALSE) install.packages("https://cran.r-project.org/src/contrib/gWidgetsRGtk2_0.0-86.tar.gz", repos = NULL, type = "source")
-  packages <- c("plot3D", "plot3Drgl", "network", "sna", "haven", "ergm")
-}
-if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
-  install.packages(setdiff(packages, rownames(installed.packages())),repos="http://cran.r-project.org",dependencies=T)  
-}
+
 require(Blaunet)
-require(gWidgets)
-require(gWidgetsRGtk2)
-require(RGtk2)
-require(cairoDevice)
+require(digest)
+require(gWidgets2)
+require(gWidgets2tcltk)
 require(plot3D)
 require(plot3Drgl)
 require(network)
@@ -28,10 +14,14 @@ require(haven)
 require(foreign)
 
 rm(list=ls())
+oldwd <- getwd()
+on.exit(setwd(oldwd))
+blnetevn <- new.env()
 clearmemory <- function(h,...) {
   rm(list=setdiff(ls(envir=.GlobalEnv),c(objls,"objls")),envir=.GlobalEnv)
   gmessage("The computer memory is successfully cleared.", parent = window)
   }
+
 source('open.R')
 source('browse.R')
 source('network.R')
@@ -41,7 +31,7 @@ source('nicheplot.R')
 source('analysis.R')
 source('dynamics.R')
 source('blaububbles.R')
-showabout <- function(h,...) gmessage("Blaunet graphic package 2.1.0", parent = window)
+showabout <- function(h,...) gmessage("Blaunet graphic package 2.2.1", parent = window)
 commandpdf <- function(h,...) {
   if (Sys.info()[1]=="Windows") shell.exec(paste(.libPaths(), "/Blaunet/scripts/command.pdf", sep="")) 
   else if (Sys.info()[1]=="Darwin") system(paste("open ",.libPaths(), "/Blaunet/scripts/command.pdf", sep=""))
@@ -53,15 +43,16 @@ graphicpdf <- function(h,...) {
   else if (Sys.info()[1]=="Linux") system(paste("xdg-open ",.libPaths(), "/Blaunet/scripts/graphic.pdf", sep=""))
 }
 ######################################################################
+window <- gwindow("Blaunet", width = 1024, height = 600, visible=FALSE)
 action_list = list(
   OpenFile = gaction(label = "Open Attribute File", handler = loadfile, parent = window),
-  OpenFile1 = gaction(label = "Open Attribute File", icon = "open", handler = loadfile, parent = window),
+  OpenFile1 = gaction(label = "Open Attribute File", icon = "open", icon.col=10, handler = loadfile, parent = window),
   OpenNet = gaction(label = "Open Network File", handler = loadnet, parent = window),
-  OpenNet1 = gaction(label = "Open Network File", icon = "arrows", handler = loadnet, parent = window),
+  OpenNet1 = gaction(label = "Open Network File", icon = "arrows", icon.col=2, handler = loadnet, parent = window),
   clear = gaction(label = "Clear Memory", handler = clearmemory, parent = window),
-  clear1 = gaction(label = "Clear Memory", icon = "clear", handler = clearmemory, parent = window),
+  clear1 = gaction(label = "Clear Memory", icon = "clear", icon.col=2, handler = clearmemory, parent = window),
   quit = gaction(label = "Quit", handler = function(...) dispose(window), parent = window),
-  quit1 = gaction(label = "Quit", icon = "quit", handler = function(...) dispose(window), parent = window),
+  quit1 = gaction(label = "Quit", icon = "quit", icon.col=2, handler = function(...) dispose(window), parent = window),
   browsefile = gaction(label = "Browse Attribute File", handler = brattr, parent = window),
   browseadj = gaction(label = "Browse Adjcency Matrix", handler = bradj, parent = window),
   browseel = gaction(label = "Browse Network Edgelist", handler = brel, parent = window),
@@ -85,11 +76,13 @@ action_list = list(
   Commandpdf = gaction(label = "Command Line Manual", handler = commandpdf, parent = window),
   Graphicpdf = gaction(label = "Graphic Package Manual", handler = graphicpdf, parent = window)
   )
-tool_bar_list<- c(action_list[c("OpenFile1","OpenNet1")], 
+tool_bar_list<- c(action_list$OpenFile1, 
+                 sep = gseparator(),
+                 action_list$OpenNet1,
+                 sep = gseparator(),				 
+                 action_list$clear1,
                  sep = gseparator(), 
-                 action_list["clear1"],
-                 sep = gseparator(), 
-                 action_list["quit1"])
+                 action_list$quit1)
 menu_bar_list <- list(Data = list(
              OpenFile = action_list$OpenFile,
              OpenNet = action_list$OpenNet,
@@ -131,11 +124,9 @@ menu_bar_list <- list(Data = list(
              Cpdf = action_list$Commandpdf
              )
            )
-
-window <- gwindow("Blaunet", width = 1024, height = 600)
-group <- ggroup(horizontal = FALSE, cont = window)
+group <- ggroup(horizontal = FALSE, spacing=1, cont = window)
 menu_bar <- gmenu(menu_bar_list, cont = window)
-tool_bar <- gtoolbar(tool_bar_list, cont = window)
+tool_bar <- gtoolbar(tool_bar_list, style = c("both-horiz"), expand=TRUE, cont = window)
 no_changes <- c("save","save.as","cut")
 if (Sys.info()[1]=="Windows") {
   setwd(gsub("scripts", "data", getwd()))
@@ -149,8 +140,8 @@ if (Sys.info()[1]=="Windows") {
 }
 glabel("Title: A Toolkit for Calculating, Visualizing, and Analyzing Social Distance Using Blau Status Analysis ", container=group, anchor=c(-1,1))
 glabel("Depends: R (>= 3.0.0)", container=group, anchor=c(-1,1))
-glabel("Imports: gWidgets, gWidgetsRGtk2, RGtk2, cairoDevice, plot3D, plot3Drgl, rgl, network, sna, ergm, statnet.common, haven, foreign", container=group, anchor=c(-1,1))
-glabel("Version: 2.1.0", container=group, anchor=c(-1,1))
+glabel("Imports: digest, gWidgets2, gWidgets2tcltk, plot3D, plot3Drgl, rgl, network, sna, ergm, statnet.common, haven, foreign", container=group, anchor=c(-1,1))
+glabel("Version: 2.2.1", container=group, anchor=c(-1,1))
 glabel("Authors: Cheng Wang*, Michael Genkin*, George Berry, Liyuan Chen, Matthew Brashears *Both authors contributed equally to this work and their names are randomly ordered", container=group, anchor=c(-1,1))
 glabel("Maintainer: Cheng Wang <chengwang@wayne.edu>", container=group, anchor=c(-1,1))
 glabel("Description: An integrated set of tools to calculate, visualize, and analyze positions in social distance between individuals belonging to (covert) organizational groups. 
@@ -159,8 +150,8 @@ glabel("License: GPL-3", container=group, anchor=c(-1,1))
 glabel("Blaunet Users Facebook group: https://www.facebook.com/groups/425015561030239/", container=group, anchor=c(-1,1))
 glabel("Funding: This project is supported by Defense Threat Reduction Agency (DTRA) Grant HDTRA-10-1-0043.", container=group, anchor=c(-1,1))
 glabel("Repository: CRAN", container=group, anchor=c(-1,1))
-glabel("Date/Publication: 2020-05-21 11:14:43", container=group, anchor=c(-1,1))
-
+glabel("Date/Publication: 2022-09-26 09:28:06", container=group, anchor=c(-1,1))
 sb <- gstatusbar("", container=window)
 #id <- addHandlerUnrealize(window, handler = function(h,...) {!gconfirm("Really close", parent = h$obj)})
 objls <- ls(envir=.GlobalEnv) 
+visible(window) <- TRUE

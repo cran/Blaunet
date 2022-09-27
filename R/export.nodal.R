@@ -1,7 +1,7 @@
 export.nodal <-
 function(blauObj, niches = TRUE){
   if (is.null(blauObj$isInNiche)){
-    print("Nothing to export.")
+    message("Nothing to export.")
   }
 
   if (niches == TRUE){

@@ -1,6 +1,5 @@
 \name{blau}
 \alias{blau}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Converts raw data into an object for Blau status analysis
 }
@@ -13,7 +12,6 @@ blau(
   memberships = NULL, complete.cases = FALSE
   )
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{square.data}{
     R matrix or \code{data.frame} object that must contain demographic and membership information (in columns). May also include columns of individual or ecology identifiers, weights, or a primary membership column.}
@@ -60,23 +58,8 @@ If node names are \code{numeric} rather than \code{character}, they should still
 If complete.cases is \code{FALSE} (the default option), we automatically use as much information as possible to compute niche boundaries. For example, an individual may have missing Blau parameter information for a certain dimension. Under the default settings, we still utilize the user's other demographic information to compute niche boundaries. If compleCases is specified as \code{TRUE}, then only observations with no missing values along all elements in the input matrix will be utilized in determining boundaries.
 }
 \value{
-    \item{obj}{An object of class \code{blau}. Object contains several elements that may be accessed with the $ operator.}
+\item{obj}{An object of class \code{blau}. Object contains several elements that may be accessed with the $ operator.}
 }
-%%\references{
-%% ~put references to the literature/web site here ~
-%%}
-%%\author{
-%%  ~~who you are~~
-%%}
-%%\note{
-%%  ~~further notes~~
-%%}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-%%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%%}
 \examples{
 ##simple example
 data(TwoCities)
@@ -104,9 +87,4 @@ el <- BSANet$el
 b <- blau(square.data, node.ids = 'person', ecology.ids = 'city', graph = el)
 #compute dyadic statuses
 b <- dyadic(b, dev.range = rep(1.5, 3)) # 3 is the number of dimensions
-
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-%%\keyword{ ~kwd1 }
-%%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

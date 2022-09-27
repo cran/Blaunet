@@ -1,6 +1,5 @@
 \name{blaunetgui}
 \alias{blaunetgui}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Run Blau status analysis in graphic user interface (GUI).
 }
@@ -23,26 +22,9 @@ blaunetgui has the following five main capabilities, it can:
 
 5) generate Blau bubbles for individuals, thereby allowing the study of interpersonal influence of similar others even with no or limited network information.
 }
-%%\references{
-%% ~put references to the literature/web site here ~
-%%}
-%%\author{
-%%  ~~who you are~~
-%%}
-%%\note{
-%%  ~~further notes~~
-%%}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-%%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%%}
+\value{No return value}
 \examples{
-##Not Run
-##blaunetgui()
+\donttest{
+blaunetgui()
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-%%\keyword{ ~kwd1 }
-%%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+}

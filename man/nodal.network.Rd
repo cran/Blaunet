@@ -1,6 +1,5 @@
 \name{nodal.network}
 \alias{nodal.network}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
     Computes nodal spanners
 }
@@ -10,7 +9,6 @@
 \usage{
 nodal.network(blauObj, dev.range, ecologies.off = FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{blauObj}{
     An object of class blau initialized with the function \code{blau}. Individuals will automatically be placed in niches with the function \code{niches} if this has not been done manually.}
@@ -25,24 +23,8 @@ This function requires sociometric network data and identifies ties that bridge 
 For individuals \code{i} and \code{j} in niches \code{alpha} and \code{beta}, if individual \code{i} is in niche \code{alpha} and individual \code{j} is in niche \code{beta}, and \code{i} and \code{j} have an edge between them, then \code{i} spans to niche \code{beta} and \code{j} spans to niche \code{alpha}. However, if \code{i} is in both niche \code{alpha} and niche \code{beta}, \code{i} would not span to \code{beta} because \code{i} is already in niche \code{beta}.
 }
 \value{
-    A matrix stored in \code{object$nodalNetwork} with two columns holding the two measures. Row names are node names provided with the \code{blau} function.
-
+A matrix stored in \code{object$nodalNetwork} with two columns holding the two measures. Row names are node names provided with the \code{blau} function.
 }
-%%\references{
-%% ~put references to the literature/web site here ~
-%%}
-%%\author{
-%%  ~~who you are~~
-%%}
-%%\note{
-%%  ~~further notes~~
-%%}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-%%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%%}
 \examples{
 data(BSANet)
 el <- BSANet$el
@@ -50,9 +32,4 @@ square.data <- BSANet$square.data
 b <- blau(square.data, node.ids = 'person', ecology.ids = 'city', graph = el)
 #will automatically compute niches
 b <- nodal.network(b, dev.range = rep(1.5, 3)) # 3 is the number of dimensions
-
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-%%\keyword{ ~kwd1 }
-%%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

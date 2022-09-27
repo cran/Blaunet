@@ -1,27 +1,27 @@
 
 brattr <- function(h,...) {
-  if ("cov" %in% ls(envir=.GlobalEnv)) {
+  if ("cov" %in% ls(envir=blnetevn)) {
     nw <- gwindow("Attribute File",width = 800, height = 600)
     group <- ggroup(horizontal = FALSE, cont = nw)
-    vars <- gtable(cov, expand = TRUE, cont = group)
+    vars <- gdf(blnetevn$cov, expand = TRUE,  fill=TRUE, cont = group)
   } else gmessage("Sorry! Attribute file is not loaded.", parent = window)
 }
 
 bradj <- function(h,...) {
-  if ("adj" %in% ls(envir=.GlobalEnv)) {
+  if ("adj" %in% ls(envir=blnetevn)) {
     nw <- gwindow("Adjacency Matrix",width = 800, height = 600)
     group <- ggroup(horizontal = FALSE, cont = nw)
-    ego <- rownames(adj)
-    adj1 <- cbind(ego,adj)
-    vars <- gtable(adj1, expand = TRUE, cont = group)
+    ego <- rownames(blnetevn$adj)
+    adj1 <- cbind(ego,blnetevn$adj)
+    vars <- gdf(adj1, expand = TRUE,  fill=TRUE, cont = group)
   } else gmessage("Sorry! Network file is not loaded.", parent = window)
 }
 
 brel <- function(h,...) {
-  if ("el" %in% ls(envir=.GlobalEnv)) {
+  if ("el" %in% ls(envir=blnetevn)) {
     nw <- gwindow("Edge List",width = 800, height = 600)
     group <- ggroup(horizontal = FALSE, cont = nw)
-    vars <- gtable(el, expand = TRUE, cont = group)
+    vars <- gdf(blnetevn$el, expand = TRUE,  fill=TRUE, cont = group)
   } else gmessage("Sorry! Network file is not loaded.", parent = window)
 }
 

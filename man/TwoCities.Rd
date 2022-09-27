@@ -43,15 +43,12 @@ The dataset contains 1,008 individuals from two cities in the United States: Bis
     \item{\code{divrsity}}{a numeric vector}
   }
 }
-%%\details{
-%%  ~~ If necessary, more details than the __description__ above ~~
-%%}
 \source{
 The TwoCities dataset excerpted, with permission, from the Social Capital Benchmark Survey, which was collected by Professor Robert D. Putnam of the Saguaro Seminar: Civic Engagement in America, a project of the John F. Kennedy School of Government at Harvard University and numerous community foundations nationwide, and made available through the Roper Center for Public Opinion Research. 
 }
-%%\references{
-%%  ~~ possibly secondary sources and usages ~~
-%%}
+\value{
+A data frame containing the TwoCities attribute file.
+}
 \examples{
 data(TwoCities)
 }

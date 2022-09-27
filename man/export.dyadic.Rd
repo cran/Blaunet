@@ -1,6 +1,5 @@
 \name{export.dyadic}
 \alias{export.dyadic}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
     Outputs dyadic level measures computed by the user
 }
@@ -10,33 +9,16 @@ Takes any output from dyadic blau functions (dyadic) and presents it in one matr
 \usage{
 export.dyadic(blauObj)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{blauObj}{
-%%     ~~Describe \code{blauObj} here~~
 }
 }
 \details{
 This function is useful to manipulate the computed dyadic Blau statuses and analyze them outside the Blaunet program, either within R or by exporting them to another statistical package. 
 }
 \value{
-    Returns an object of class data.frame that includes all output from function dyadic. The user must manually call the \code{dyadic} function prior to calling \code{export.dyadic}.
+Returns an object of class data.frame that includes all output from function dyadic. The user must manually call the \code{dyadic} function prior to calling \code{export.dyadic}.
 }
-%%\references{
-%% ~put references to the literature/web site here ~
-%%}
-%%\author{
-%%  ~~who you are~~
-%%}
-%%\note{
-%%  ~~further notes~~
-%%}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-%%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%%}
 \examples{
 data(BSANet)
 square.data <- BSANet$square.data
@@ -44,9 +26,4 @@ el <- BSANet$el
 b <- blau(square.data, node.ids = 'person', ecology.ids = 'city', graph = el)
 b <- dyadic(b, dev.range = rep(1.5, 3)) # 3 is the number of dimensions
 export.dyadic(b)
-
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-%%\keyword{ ~kwd1 }
-%%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

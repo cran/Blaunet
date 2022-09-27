@@ -12,6 +12,6 @@ function(arg) {
     return(binary) 
   } 
   else { 
-    print('Blau dimension columns must be coercable to matrix')
+    message('Blau dimension columns must be coercable to matrix')
   }
 }
